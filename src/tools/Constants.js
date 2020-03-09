@@ -1,0 +1,11 @@
+const constants = {
+    FETCH_LOGIN: "FETCH_LOGIN",
+    SUCCESS_LOGIN: "SUCCESS_LOGIN",
+    FAIL_LOGIN: "FAIL_LOGIN",
+    DISCONNECT: "DISCONNECT",
+    TRANSLATE: "TRANSLATE",
+    FUNCTIONALITY: "FUNCTIONALITY",
+    PUSH: "PUSH"
+};
+
+export default constants;
