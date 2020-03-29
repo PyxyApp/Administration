@@ -1,4 +1,7 @@
 .content.col-10{
   max-width: calc(100% - 200px);
   min-width: calc(100% - 200px);
+  height: calc(100vh - 68px);
+  position: absolute;
+  right: 0;
 }
