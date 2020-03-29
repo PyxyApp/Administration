@@ -1,9 +1,9 @@
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
-import Login from '../views/Login';
-import {disconnect} from "../../redux/actions/Disconnect.action";
-import {pushRoute} from "../../redux/actions/PushRoute.action";
-import {onLogin} from "../../redux/actions/OnLogin.action";
+import Login from '../../views/Auth/Login';
+import {disconnect} from "../../../redux/actions/Disconnect.action";
+import {pushRoute} from "../../../redux/actions/PushRoute.action";
+import {onLogin} from "../../../redux/actions/OnLogin.action";
 
 const mapDispatchToProps = {
         onLogin,
