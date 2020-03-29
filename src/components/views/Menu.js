@@ -1,11 +1,6 @@
-import * as firebase from "firebase";
 import React, { Component } from 'react';
-import {Nav, Navbar} from "react-bootstrap";
+import {ListGroup} from "react-bootstrap";
 import {history} from "../../redux/store/defaultStore";
-import NavDropdown from "react-bootstrap/NavDropdown";
-require("firebase/auth");
-require("firebase/firestore");
-
 class Header extends Component {
 
     constructor(props) {
@@ -15,27 +10,19 @@ class Header extends Component {
         };
     }
 
-
     render(){
-        const user = firebase.auth().currentUser;
         return(
             <div>
                 {history.location.pathname !== '/login' ? (
-                    <Navbar bg="dark" variant="dark">
-                        <Navbar.Brand href="#home">PYXY</Navbar.Brand>
-                        {/* Remove display user during front dev */}
-                        {/*<NavDropdown title={(user.displayName !== null) ? (user.displayName) : (user.email)} id="basic-nav-dropdown">*/}
-                        <NavDropdown title="Nicolas Notararigo" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/profile/settings">Settings</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav className="mr-auto">
-                            <Nav.Link to="/">Dashboard</Nav.Link>
-                            <Nav.Link to="/users">Users</Nav.Link>
-                        </Nav>
-                    </Navbar>
-                ) : "" }
+                    <ListGroup variant="flush" defaultActiveKey="#link1">
+                        <ListGroup.Item action href="#link1">
+                            Link 1
+                        </ListGroup.Item>
+                        <ListGroup.Item href="#link2">
+                            Link 2
+                        </ListGroup.Item>
+                    </ListGroup>
+                    ) : "" }
             </div>
         )
     }
