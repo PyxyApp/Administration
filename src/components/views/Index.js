@@ -1,22 +1,24 @@
 import React, {Component} from 'react';
 import Menu from "../containers/Menu";
-import {Route} from "react-router-dom";
+import Content from "../containers/Content.js";
 
 class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            page: this.props.location.pathname
+        };
     }
 
     render() {
         return (
-            <div>
-                <div className="col-3">
+            <div className={'d-flex'}>
+                <div className="sideMenu col-2">
                     <Menu />
                 </div>
-                <div className="col-8">
-                    <Route exact path="/" component={""}/>
+                <div className="content col-10">
+                    <Content page={this.state.page}/>
                 </div>
             </div>
         )
