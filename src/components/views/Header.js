@@ -33,7 +33,7 @@ class Header extends Component {
                         <NavDropdown title={(
                             <span>
                             <FontAwesomeIcon icon={faBell} />
-                            <Badge pill variant="danger" className={"Notifications"}>
+                            <Badge pill variant="danger" className={"notifications"}>
                             5
                             </Badge>
                             </span>
@@ -45,7 +45,7 @@ class Header extends Component {
                         <NavDropdown title={(
                             <span>
                                 <FontAwesomeIcon icon={faEnvelopeOpenText} />
-                                <Badge pill variant="info" className={"Notifications"}>
+                                <Badge pill variant="info" className={"notifications"}>
                                     4
                                   </Badge>
                             </span>
