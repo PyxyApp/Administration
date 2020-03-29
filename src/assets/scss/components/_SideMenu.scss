@@ -1,0 +1,31 @@
+.sideMenu.col-2{
+  max-width: 200px;
+  height: calc(100vh - 68px);
+  background: $background-color-sidebar;
+  padding: 0;
+  overflow: scroll;
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  h3{
+    padding: .75rem 1rem;
+    font-size: 80%;
+    font-weight: 700;
+    color: #e4e7ea;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .list-group-item{
+    &.active{
+      border-bottom: 1px solid $secondary-color;
+      background-color: $background-color-sidebar-active;
+      color: white
+    }
+    background-color: $background-color-sidebar;
+    color: $secondary-color;
+    cursor: pointer;
+    &:hover{
+      background-color: $background-color-sidebar-active;
+    }
+  }
+}
