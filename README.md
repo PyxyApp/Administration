@@ -1,3 +1,9 @@
+![GitHub package.json version](https://img.shields.io/github/package-json/v/PyxyApp/Administration)
+![Discord](https://img.shields.io/discord/681488975071936559)
+![GitHub repo size](https://img.shields.io/github/repo-size/PyxyApp/Administration)
+[![Maintainability](https://api.codeclimate.com/v1/badges/483bcc7a6f76ad873acc/maintainability)](https://codeclimate.com/github/PyxyApp/Administration/maintainability)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/PyxyApp/Administration)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

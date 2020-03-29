@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Index extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-            this.state = {
-            };
+        this.state = {};
     }
 
-    render(){
-        return(
-            <div>
-
+    render() {
+        return (
+            <div className='container mt-4'>
+                bonjour
             </div>
         )
     }
