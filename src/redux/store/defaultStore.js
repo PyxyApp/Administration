@@ -15,7 +15,8 @@ export default function configureStore(preloadedState) {
         composeEnhancer(
             applyMiddleware(
                 routerMiddleware(history),
-                checkAuth(history),
+                // Remove checkAuth during front dev
+                // checkAuth(history),
                 thunk
             ),
         )
