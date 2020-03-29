@@ -10,7 +10,7 @@ const App = ({history}) => {
   return (
       <ConnectedRouter history={history}>
               <Route path="/" component={Header}/>
-              <Route exact path="/" component={Index}/>
+              <Route path="/" component={Index}/>
               <Route exact path="/login" component={Login}/>
       </ConnectedRouter>
   );
