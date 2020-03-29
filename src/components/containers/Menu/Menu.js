@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import Menu from "../views/Menu";
-import {pushRoute} from "../../redux/actions/PushRoute.action";
+import Menu from "../../views/Menu/Menu";
+import {pushRoute} from "../../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
         pushRoute
