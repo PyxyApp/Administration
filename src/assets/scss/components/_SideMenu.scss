@@ -18,6 +18,18 @@
     text-transform: uppercase;
     margin-bottom: 0;
   }
+  .list-group{
+    a{
+      &.active{
+        .list-group-item{
+          color: white;
+          background-color: $background-color-sidebar-active !important;
+        }
+        background-color: $background-color-sidebar-active !important;
+        text-decoration: none;
+      }
+    }
+  }
   .list-group-item{
     background-color: $background-color-sidebar;
     color: $secondary-color;

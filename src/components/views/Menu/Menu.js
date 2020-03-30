@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {ListGroup} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 class Header extends Component {
 
     constructor(props) {
@@ -14,43 +14,43 @@ class Header extends Component {
         return(
             <div className={"sideMenu col-2"}>
                 <ListGroup variant="flush" defaultActiveKey="#link1">
-                    <Link to={'/'}>
+                    <NavLink exact to={'/'} activeClassName="active">
                         <ListGroup.Item>
                             Dashboard
                         </ListGroup.Item>
-                    </Link>
+                    </NavLink>
                     <h3>Data</h3>
-                    <Link to={"/users"}>
+                    <NavLink to={"/users"} activeClassName="active">
                         <ListGroup.Item>
                             Users
                         </ListGroup.Item>
-                    </Link>
-                    <Link to={"/categories"}>
+                    </NavLink>
+                    <NavLink to={"/categories"} activeClassName="active">
                         <ListGroup.Item>
                             Categories
                         </ListGroup.Item>
-                    </Link>
-                    <Link to="/activities">
+                    </NavLink>
+                    <NavLink to="/activities" activeClassName="active">
                         <ListGroup.Item>
                             Users
                         </ListGroup.Item>
-                    </Link>
-                    <Link to="/lists">
+                    </NavLink>
+                    <NavLink to="/lists" activeClassName="active">
                         <ListGroup.Item>
                             Lists
                         </ListGroup.Item>
-                    </Link>
-                    <Link to={"/tasks"}>
+                    </NavLink>
+                    <NavLink to={"/tasks"} activeClassName="active">
                         <ListGroup.Item>
                             Tasks
                         </ListGroup.Item>
-                    </Link>
+                    </NavLink>
                     <h3>Moderation</h3>
-                    <Link to={"/alert"}>
+                    <NavLink to={"/alert"} activeClassName="active">
                         <ListGroup.Item>
                             Signalement
                         </ListGroup.Item>
-                    </Link>
+                    </NavLink>
                 </ListGroup>
             </div>
         )
