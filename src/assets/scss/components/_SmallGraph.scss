@@ -1,0 +1,17 @@
+.smallGraph{
+  border-radius: 5px !important;
+  padding: 1em 0.25em;
+  border: 0 !important;
+  &.newUsers{
+    border-left: $newUsers-color 5px solid !important;
+  }
+  &.activeUsers{
+    border-left: $activeUsers-color 5px solid !important;
+  }
+  &.listCreated{
+    border-left: $listCreated-color 5px solid !important;
+  }
+  &.taskCreated{
+    border-left: $taskCreated-color 5px solid !important;
+  }
+}
