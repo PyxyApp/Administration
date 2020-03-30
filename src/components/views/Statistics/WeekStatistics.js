@@ -24,9 +24,14 @@ class WeekStatistics extends Component {
             nbUsers: "",
             nbRegisterThisWeek: "",
             nbMale: "",
+            nbMalePercent: "",
             weekStats: []
         };
     }
+
+    calcStats = () => {
+
+    };
 
     getStats = () => {
         let curr = new Date;
@@ -94,17 +99,17 @@ class WeekStatistics extends Component {
                                 <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
                                         <span>
                                             <FontAwesomeIcon icon={faVenus} /> Female</span>
-                                    <span className="font-weight-bold">59%</span>
+                                    <span className="font-weight-bold">{100 -((this.state.nbMale * 100) / this.state.nbUsers)}%</span>
                                 </Card.Subtitle>
-                                <ProgressBar now="59" variant="warning" label="taskCreated" srOnly />
+                                <ProgressBar now={100 -((this.state.nbMale * 100) / this.state.nbUsers)} variant="warning" label="taskCreated" srOnly />
                             </div>
                             <div className="p-1">
                                 <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
                                         <span>
                                             <FontAwesomeIcon icon={faMars} /> Male</span>
-                                    <span className="font-weight-bold">41%</span>
+                                    <span className="font-weight-bold">{(this.state.nbMale * 100) / this.state.nbUsers}%</span>
                                 </Card.Subtitle>
-                                <ProgressBar now="41" variant="warning" label="taskCreated" srOnly />
+                                <ProgressBar now={(this.state.nbMale * 100) / this.state.nbUsers} variant="warning" label="taskCreated" srOnly />
                             </div>
                         </div>
                     </div>
