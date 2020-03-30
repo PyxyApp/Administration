@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
-import {ListGroup} from "react-bootstrap";
-import {Link} from "react-router-dom";
-class Header extends Component {
+import {Card} from "react-bootstrap";
+import {Line, LineChart, Tooltip, XAxis} from "recharts";
+
+const data = [
+    {name: 'Monday', new_user: 1},
+    {name: 'Tuesday', new_user: 3},
+    {name: 'Wednesday', new_user: 2},
+    {name: 'Thursday', new_user: 4},
+    {name: 'Friday', new_user: 2},
+    {name: 'Saturday', new_user: 2},
+    {name: 'Sunday', new_user: 1},
+];
+
+class SmallGraph extends Component {
 
     constructor(props) {
         super(props);
@@ -10,50 +21,28 @@ class Header extends Component {
         };
     }
 
+    totalData = () => {
+        let result = 0;
+        for(let i=0; i<data.length; i++){
+            result += data[i].new_user;
+        }
+        return result;
+    };
+
     render(){
         return(
-            <div className={"sideMenu col-2"}>
-                <ListGroup variant="flush" defaultActiveKey="#link1">
-                    <Link to={'/'}>
-                        <ListGroup.Item>
-                            Dashboard
-                        </ListGroup.Item>
-                    </Link>
-                    <h3>Data</h3>
-                    <Link to={"/users"}>
-                        <ListGroup.Item>
-                            Users
-                        </ListGroup.Item>
-                    </Link>
-                    <Link to={"/categories"}>
-                        <ListGroup.Item>
-                            Categories
-                        </ListGroup.Item>
-                    </Link>
-                    <Link to="/activities">
-                        <ListGroup.Item>
-                            Users
-                        </ListGroup.Item>
-                    </Link>
-                    <Link to="/lists">
-                        <ListGroup.Item>
-                            Lists
-                        </ListGroup.Item>
-                    </Link>
-                    <Link to={"/tasks"}>
-                        <ListGroup.Item>
-                            Tasks
-                        </ListGroup.Item>
-                    </Link>
-                    <h3>Moderation</h3>
-                    <Link to={"/alert"}>
-                        <ListGroup.Item>
-                            Signalement
-                        </ListGroup.Item>
-                    </Link>
-                </ListGroup>
-            </div>
+            <Card className={'d-flex flex-row smallGraph' + " "+this.props.type}>
+                <div className={'flex-column'}>
+                    <Card.Subtitle>{this.props.title}</Card.Subtitle>
+                    <h5>{this.totalData()}</h5>
+                </div>
+                <LineChart width={150} height={50} data={data}>
+                    <XAxis hide dataKey="name" />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="new_user" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                </LineChart>
+            </Card>
         )
     }
 }
-export default (Header);
+export default (SmallGraph);
