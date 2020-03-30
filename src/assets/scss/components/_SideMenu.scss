@@ -1,4 +1,6 @@
 .sideMenu.col-2{
+  position: fixed;
+  top: 68px;
   max-width: 200px;
   min-width: 200px;
   height: calc(100vh - 68px);

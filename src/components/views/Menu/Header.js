@@ -19,7 +19,7 @@ class Header extends Component {
     render(){
         // const user = firebase.auth().currentUser;
         return(
-            <Navbar>
+            <Navbar fixed="top">
                 <Navbar.Brand href="#home">PYXY</Navbar.Brand>
                 {/* Remove display user during front dev */}
                 {/*<NavDropdown title={(user.displayName !== null) ? (user.displayName) : (user.email)} id="basic-nav-dropdown">*/}
