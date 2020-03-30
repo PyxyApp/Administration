@@ -29,6 +29,21 @@ class SmallGraph extends Component {
         return result;
     };
 
+    switchColor = (type) =>{
+      switch (type) {
+          case "newUsers":
+              return "#63c2de";
+          case "activeUsers":
+              return "#f86c6b";
+          case "listCreated":
+              return "#ffc107";
+          case "taskCreated":
+              return "#4dbd74";
+          default:
+              return "#63c2de"
+      }
+    };
+
     render(){
         return(
             <Card className={'d-flex flex-row smallGraph' + " "+this.props.type}>
@@ -39,7 +54,7 @@ class SmallGraph extends Component {
                 <LineChart width={150} height={50} data={data}>
                     <XAxis hide dataKey="name" />
                     <Tooltip />
-                    <Line type="monotone" dataKey="new_user" stroke="#8884d8" strokeWidth={2} dot={false}/>
+                    <Line type="monotone" dataKey="new_user" stroke={this.switchColor(this.props.type)} strokeWidth={2} dot={false}/>
                 </LineChart>
             </Card>
         )
