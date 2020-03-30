@@ -19,16 +19,18 @@
     margin-bottom: 0;
   }
   .list-group-item{
+    background-color: $background-color-sidebar;
+    color: $secondary-color;
+    cursor: pointer;
     &.active{
       border-bottom: 1px solid $secondary-color;
       background-color: $background-color-sidebar-active;
       color: white
     }
-    background-color: $background-color-sidebar;
-    color: $secondary-color;
-    cursor: pointer;
     &:hover{
       background-color: $background-color-sidebar-active;
+      color: white;
+      text-decoration: underline;
     }
   }
 }
