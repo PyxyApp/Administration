@@ -22,12 +22,27 @@ class WeekStatistics extends Component {
             load: false,
             tokenACP: "",
             nbUsers: "",
+            nbRegisterThisWeek: "",
             nbMale: "",
             weekStats: []
         };
     }
 
     getStats = () => {
+        let curr = new Date;
+        let week = [];
+
+        for (let i = 1; i <= 7; i++) {
+            let first = curr.getDate() - curr.getDay() + i;
+            let day = new Date(curr.setDate(first));
+            let timestamp = Date.parse(day);
+            timestamp -= (curr.getMilliseconds() + (curr.getSeconds() * 1000) - 1000 + (curr.getMinutes() * 60 * 1000) + (curr.getHours() * 3600 * 1000) );
+            // 601199
+            timestamp /= 1000;
+            // let newDay = new Date(timestamp);
+            week.push({timestamp})
+        }
+        const weekTimeStamp = {start: week[0], end: week[0]+601199};
         fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/users/', {
             headers: {
                 'Authorization': this.state.tokenACP
@@ -36,11 +51,17 @@ class WeekStatistics extends Component {
         .then(response => response.json())
             .then(json => {
                 if(json){
+                    const registerByWeek = json.filter(user => (user.date.date_created._seconds <= weekTimeStamp.end))
+                        .filter(user => (user.date.date_created._seconds >= weekTimeStamp.start));
+                    const ActiveByWeek = json.filter(user => (user.date.last_login._seconds <= weekTimeStamp.end))
+                        .filter(user => (user.date.last_login._seconds >= weekTimeStamp.start));
                     const resultGender = json.filter(user => user.gender === 'm');
                     this.setState({
                         nbUsers: json.length,
                         nbMale: resultGender.length,
-                        load: true
+                        nbRegisterThisWeek: registerByWeek.length,
+                        nbActiveThisWeek: ActiveByWeek.length,
+                        load: true,
                     });
                 }
             });
