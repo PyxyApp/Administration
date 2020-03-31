@@ -9,13 +9,6 @@ import ProfileSettings from './components/containers/Content/ProfileSettings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = ({history}) => {
-    if (history.location.pathname === '/login') {
-        return (
-            <ConnectedRouter history={history}>
-                <Route exact path="/login" component={Login}/>
-            </ConnectedRouter>
-            )
-    } else {
         return (
             <ConnectedRouter history={history}>
                 <Route path="/" component={Header}/>
@@ -25,7 +18,6 @@ const App = ({history}) => {
                 <Route path="/" component={Menu}/>
             </ConnectedRouter>
             )
-    }
 };
 
 export default App;
