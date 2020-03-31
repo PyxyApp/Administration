@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Card, Form} from "react-bootstrap";
 import * as firebase from "firebase";
-require("firebase/auth");
-require("firebase/firestore");
 
 class Index extends Component {
 

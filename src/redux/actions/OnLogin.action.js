@@ -1,8 +1,6 @@
 import * as firebase from "firebase";
 import {history} from '../store/defaultStore';
 import C from "../../tools/Constants";
-require("firebase/auth");
-require("firebase/firestore");
 
 export const onLogin = (login, password, token) => dispatch => {
     dispatch({

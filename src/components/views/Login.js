@@ -4,8 +4,6 @@ import {firebaseConfig} from '../../firebaseConfig'
 import key from '../../privateKey';
 import * as firebase from 'firebase/app';
 import C from "../../tools/Constants";
-require("firebase/auth");
-require("firebase/firestore");
 const jwt = require('jsonwebtoken');
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 

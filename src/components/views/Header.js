@@ -4,8 +4,6 @@ import {Badge, Image, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
-require("firebase/auth");
-require("firebase/firestore");
 
 class Header extends Component {
 

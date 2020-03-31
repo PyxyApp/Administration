@@ -10,6 +10,8 @@
 
 # production
 /build
+./src/firebaseConfig.js
+./src/privateKey.json
 
 # misc
 .idea/
