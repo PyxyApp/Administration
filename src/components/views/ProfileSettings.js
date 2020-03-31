@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
-import {Button, Card, Form} from "react-bootstrap";
+import {Alert, Button, Card, Form, Toast} from "react-bootstrap";
 import * as firebase from "firebase";
+import C from "../../tools/Constants";
 
 class Index extends Component {
 
     constructor(props) {
+        let user = firebase.auth().currentUser;
         super(props);
-        this.state = {};
+        this.state = {
+            email: user.email,
+            displayName: user.displayName,
+            phoneNumber: user.phoneNumber
+        };
     }
 
     handleSubmit = (e) => {
@@ -21,7 +27,6 @@ class Index extends Component {
     };
 
     render() {
-        let user = firebase.auth().currentUser;
         return (
             <div className="content col-10 mt-3">
                 <Card>
@@ -30,15 +35,15 @@ class Index extends Component {
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>My current email address </Form.Label>
-                                <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} defaultValue={user.email}/>
+                                <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.handleChange} defaultValue={this.state.email}/>
                             </Form.Group>
                             <Form.Group controlId="formDisplayName">
                                 <Form.Label>Display Name</Form.Label>
-                                <Form.Control name="displayName" type="displayName" placeholder="Display Name" onChange={this.handleChange} defaultValue={user.displayName}/>
+                                <Form.Control name="displayName" type="displayName" placeholder="Display Name" onChange={this.handleChange} defaultValue={this.state.displayName}/>
                             </Form.Group>
                             <Form.Group controlId="formPhoneNumber">
                                 <Form.Label>Phone Number</Form.Label>
-                                <Form.Control name="phoneNumber" type="phoneNumber" placeholder="Phone Number" onChange={this.handleChange} defaultValue={user.phoneNumber}/>
+                                <Form.Control name="phoneNumber" type="phoneNumber" placeholder="Phone Number" onChange={this.handleChange} defaultValue={this.state.phoneNumber}/>
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Submit
