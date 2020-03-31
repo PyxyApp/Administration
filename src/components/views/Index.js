@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card} from "react-bootstrap";
-import WeekStatistics from "../../containers/Statistics/WeekStatistics";
+import WeekStatistics from "../containers/WeekStatistics";
 
 class Index extends Component {
 

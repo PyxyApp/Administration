@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router';
-import Index from './components/containers/Content/Index';
-import Login from './components/containers/Auth/Login';
-import Header from './components/containers/Menu/Header';
-import Menu from './components/containers/Menu/Menu';
-import ProfileSettings from './components/containers/Content/ProfileSettings';
+import Index from './components/containers/Index';
+import Login from './components/containers/Login';
+import Header from './components/containers/Header';
+import Menu from './components/containers/Menu';
+import ProfileSettings from './components/containers/ProfileSettings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = ({history}) => {

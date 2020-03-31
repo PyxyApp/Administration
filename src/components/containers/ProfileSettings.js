@@ -1,9 +1,11 @@
 import {connect} from "react-redux";
-import ProfileSettings from "../../views/Content/ProfileSettings";
-import {pushRoute} from "../../../redux/actions/PushRoute.action";
+import ProfileSettings from "../views/ProfileSettings";
+import {pushRoute} from "../../redux/actions/PushRoute.action";
+import {updateProfile} from "../../redux/actions/UpdateProfile.action";
 
 const mapDispatchToProps = {
-    pushRoute
+    pushRoute,
+    updateProfile
 };
 
 const mapStateToProps = state =>

@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import Header from "../../views/Menu/Header";
-import {pushRoute} from "../../../redux/actions/PushRoute.action";
+import WeekStatistics from "../views/WeekStatistics";
+import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
         pushRoute
@@ -14,5 +14,5 @@ const mapStateToProps = state =>
     });
 
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Header);
+const Container = connect(mapStateToProps, mapDispatchToProps)(WeekStatistics);
 export default Container;

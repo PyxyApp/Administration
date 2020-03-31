@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Card, ProgressBar} from "react-bootstrap";
-import SmallGraph from "../modules/Graph/SmallGraph";
-import ComparisonTasksWeek from '../modules/ComparisonTasksWeek';
+import SmallGraph from "./SmallGraph";
+import ComparisonTasksWeek from './ComparisonTasksWeek';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMars, faVenus} from "@fortawesome/free-solid-svg-icons";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
+import {firebaseConfig} from "../../firebaseConfig";
+import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;

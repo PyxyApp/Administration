@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import Menu from "../../views/Menu/Menu";
-import {pushRoute} from "../../../redux/actions/PushRoute.action";
+import Header from "../views/Header";
+import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
         pushRoute
@@ -14,5 +14,5 @@ const mapStateToProps = state =>
     });
 
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Menu);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Header);
 export default Container;

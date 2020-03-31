@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Form, Button} from "react-bootstrap";
-import {firebaseConfig} from '../../../firebaseConfig'
-import key from '../../../privateKey';
+import {firebaseConfig} from '../../firebaseConfig'
+import key from '../../privateKey';
 import * as firebase from 'firebase/app';
-import C from "../../../tools/Constants";
+import C from "../../tools/Constants";
 require("firebase/auth");
 require("firebase/firestore");
 const jwt = require('jsonwebtoken');
