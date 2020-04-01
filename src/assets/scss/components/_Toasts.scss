@@ -1,0 +1,17 @@
+.toast{
+  position: fixed;
+  top: 58px;
+  right: 15px;
+  &.success{
+    border: 1px solid $success-color;
+    .toast-header > span{
+      color: $success-color;
+    }
+  }
+  &.error{
+    border: 1px solid $danger-color;
+    .toast-header > span{
+      color: $danger-color;
+    }
+  }
+}
