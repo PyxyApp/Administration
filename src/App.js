@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router';
 import Index from './components/containers/Index';
+import Categories from './components/containers/Categories';
 import Login from './components/containers/Login';
 import Header from './components/containers/Header';
 import Menu from './components/containers/Menu';
@@ -15,6 +16,7 @@ const App = ({history}) => {
                 <Route path="/" component={Header}/>
                 <Route exact path="/" component={Index}/>
                 <Route exact path="/users" component={Users}/>
+                <Route exact path="/categories" component={Categories}/>
                 <Route exact path="/profile/settings" component={ProfileSettings}/>
                 <Route exact path="/login" component={Login}/>
                 <Route path="/" component={Menu}/>

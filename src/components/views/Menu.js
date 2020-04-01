@@ -33,11 +33,6 @@ class Header extends Component {
                                 Categories
                             </ListGroup.Item>
                         </NavLink>
-                        <NavLink to="/activities" activeClassName="active">
-                            <ListGroup.Item>
-                                Users
-                            </ListGroup.Item>
-                        </NavLink>
                         <NavLink to="/lists" activeClassName="active">
                             <ListGroup.Item>
                                 Lists
@@ -51,7 +46,7 @@ class Header extends Component {
                         <h3>Moderation</h3>
                         <NavLink to={"/alert"} activeClassName="active">
                             <ListGroup.Item>
-                                Signalement
+                                Reporting
                             </ListGroup.Item>
                         </NavLink>
                     </ListGroup>
