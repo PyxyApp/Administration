@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {Alert, Button, Card, Form, Toast} from "react-bootstrap";
+import {Button, Card, Form} from "react-bootstrap";
 import * as firebase from "firebase";
-import C from "../../tools/Constants";
 
 class Index extends Component {
 

@@ -29,12 +29,8 @@ class WeekStatistics extends Component {
         };
     }
 
-    calcStats = () => {
-
-    };
-
     getStats = () => {
-        let curr = new Date;
+        let curr = new Date();
         let week = [];
 
         for (let i = 1; i <= 7; i++) {

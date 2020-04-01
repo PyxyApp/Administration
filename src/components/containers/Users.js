@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Index from "../views/Index";
+import Users from "../views/Users";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
@@ -13,5 +13,5 @@ const mapStateToProps = state =>
         userSession: state.userSession
     });
 
-const Container = connect(mapStateToProps, mapDispatchToProps)(Index);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Users);
 export default Container;
