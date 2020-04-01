@@ -5,10 +5,9 @@ import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faUserEdit, faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Gravatar from 'react-gravatar';
 import Pagination from "react-pagination-bootstrap";
 import Toasts from "./Toasts";
-import {routeAPI} from '../../index';
+import {routeAPI} from "../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -16,7 +15,7 @@ jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
     this.setState({tokenACP: token}).catch(err)(console.error(err.message));
 });
 
-class Lists extends Component {
+class Tasks extends Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +25,7 @@ class Lists extends Component {
             isShown: false,
             isLoading: false,
             load: false,
-            loadUsers: false,
+            loadLists: false,
             dataId: '',
             activePage: '1',
             startRange: '0',
@@ -37,16 +36,16 @@ class Lists extends Component {
         };
     }
 
-    getTotalUsers = (token) => {
-        fetch(routeAPI + 'users/', {
+    getTotalLists = (token) => {
+        fetch(routeAPI + 'lists/', {
             method: 'GET',
             headers: {'Authorization': token},
         })
             .then(response => response.json()
                 .then(json => {
                     this.setState({
-                        users: json,
-                        loadUsers: true
+                        lists: json,
+                        loadLists: true
                     })
                 })
             )
@@ -55,22 +54,21 @@ class Lists extends Component {
             })
     };
 
-    getTotalLists = (token) => {
+    getTotalTasks = (token) => {
         if(!this.state.load){
-            fetch(routeAPI + 'lists/', {
-                method: 'GET',
+            fetch(routeAPI + 'tasks/', {
                 headers: {'Authorization': token},
             })
                 .then(response => response.json()
                     .then(json => {
                         this.setState({
-                            lists: json,
+                            tasks: json,
                             load: true
                         })
                     })
                 )
                 .catch(e => {
-                    console.error(e);
+                    console.error(e.message);
                 })
         }
     };
@@ -80,27 +78,26 @@ class Lists extends Component {
     closeToast = () => {this.setState({showToast: false})};
     delayToHide = () => {setTimeout(this.closeToast, 10000)};
 
-    deleteConfirm = (e) => {
-        e.preventDefault();
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/lists/' + this.state.data.user.uid, {
-            method: "DEL",
-            headers: {'Authorization': this.state.tokenACP},
-        })
-            .then(response => response.json()
-                .then(json => {
-                    console.log(json)
-                })
-            )
-            .catch(e => {
-                console.error(e);
-            });
-        this.handleClose();
-        this.showToasts();
-        this.delayToHide();
-    };
+    // deleteConfirm = (e) => {
+    //     e.preventDefault();
+    //     fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/lists/' + this.state.data.user.uid, {
+    //         method: "DEL",
+    //         headers: {'Authorization': this.state.tokenACP},
+    //     })
+    //         .then(response => response.json()
+    //             .then(json => {
+    //                 console.log(json)
+    //             })
+    //         )
+    //         .catch(e => {
+    //             console.error(e);
+    //         });
+    //     this.handleClose();
+    //     this.showToasts();
+    //     this.delayToHide();
+    // };
 
     handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
         let endRange = 10*pageNumber;
         let startRange = endRange-10;
 
@@ -113,14 +110,14 @@ class Lists extends Component {
 
     render() {
         if(!this.state.load){
-            this.getTotalUsers(this.state.tokenACP);
             this.getTotalLists(this.state.tokenACP);
+            this.getTotalTasks(this.state.tokenACP);
         }
         return (
             <div className="content col-10 mt-3">
                 <Card>
                     <Card.Header>
-                        Lists
+                        Tasks
                     </Card.Header>
                     <Card.Body className="d-flex justify-content-center">
                         {!this.state.load ?
@@ -140,21 +137,21 @@ class Lists extends Component {
                                             <th>#</th>
                                             <th>id</th>
                                             <th>Title</th>
-                                            <th>User</th>
+                                            <th>List</th>
                                             <th>Private</th>
-                                            <th>Active</th>
+                                            <th>Done</th>
                                             <th>Actions</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {this.state.loadUsers ?
-                                            this.state.lists.slice(this.state.startRange, this.state.endRange).map( (lists, index) => {
+                                        {this.state.load ?
+                                            this.state.tasks.slice(this.state.startRange, this.state.endRange).map( (task, index) => {
                                                 return <tr key={index}>
                                                     <td>{index + 1}</td>
-                                                    <td>{lists.uid}</td>
-                                                    <td>{lists.title}</td>
+                                                    <td>{task.uid}</td>
+                                                    <td>{task.name}</td>
                                                     <td>
-                                                        {!this.state.load ?
+                                                        {!this.state.loadLists ?
                                                             (
                                                                 <span>
                                                                         <Spinner animation="grow"/>
@@ -163,21 +160,16 @@ class Lists extends Component {
                                                                     </span>
                                                             )
                                                             :
-                                                            this.state.users.map((user, index) => {
-                                                                if (user.uid === lists.user) return (
+                                                            this.state.lists.map((list, index) => {
+                                                                if (list.uid === task.list) return (
                                                                     <span key={index}>
-                                                                           <Gravatar email={user.email}
-                                                                                     title={user.name.firstname + ' ' + user.name.lastname + ' ' + "(" + user.name.username + ")"}
-                                                                                     size={35}
-                                                                                     className="rounded-circle"
-                                                                           />&nbsp;
-                                                                        {user.name.firstname + ' ' + user.name.lastname + ' ' + "(" + user.name.username + ")"}
+                                                                        {list.title}
                                                                         </span>
                                                                 )
                                                             })
                                                         }</td>
                                                     <td>
-                                                        {(lists.is_private) ? (
+                                                        {(task.is_private) ? (
                                                             <Button variant={"success"}><FontAwesomeIcon
                                                                 icon={faCheck}/></Button>
                                                         ) : (
@@ -185,7 +177,7 @@ class Lists extends Component {
                                                         )}
                                                     </td>
                                                     <td>
-                                                        {(lists.is_active) ? (
+                                                        {(task.is_done) ? (
                                                             <Button variant={"success"}><FontAwesomeIcon
                                                                 icon={faCheck}/></Button>
                                                         ) : (
@@ -199,7 +191,7 @@ class Lists extends Component {
                                                             <Button variant={"danger"}
                                                                     onClick={() => this.setState({
                                                                             isShown: true,
-                                                                            data: {lists}
+                                                                            data: {task}
                                                                         }
                                                                     )}><FontAwesomeIcon icon={faTimes}/></Button>
                                                         </ButtonGroup>
@@ -209,7 +201,7 @@ class Lists extends Component {
                                         </tbody>
                                     </Table>
                                     <Pagination
-                                        totalItemsCount={this.state.lists.length}
+                                        totalItemsCount={this.state.tasks.length}
                                         activePage={this.state.activePage}
                                         itemsCountPerPage={10}
                                         pageRangeDisplayed={5}
@@ -223,7 +215,7 @@ class Lists extends Component {
                                 <Modal.Title>Confirm</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                Are you sure to want delete {this.state.data ? this.state.data.lists.email : ""} ?
+                                Are you sure to want delete {this.state.data ? this.state.data.task.name : ""} ?
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button variant="secondary" onClick={this.handleClose}>
@@ -241,4 +233,4 @@ class Lists extends Component {
         )
     }
 }
-export default (Lists);
+export default (Tasks);

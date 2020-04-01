@@ -7,6 +7,7 @@ import {faMars, faVenus} from "@fortawesome/free-solid-svg-icons";
 import {firebaseConfig} from "../../firebaseConfig";
 import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
+import {routeAPI} from "../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -44,7 +45,7 @@ class WeekStatistics extends Component {
             week.push({timestamp})
         }
         const weekTimeStamp = {start: week[0], end: week[0]+601199};
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/users/', {
+        fetch(routeAPI + 'users/', {
             headers: {
                 'Authorization': this.state.tokenACP
             },

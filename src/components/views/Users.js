@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Gravatar from 'react-gravatar';
 import Pagination from "react-pagination-bootstrap";
 import Toasts from "./Toasts";
+import {routeAPI} from "../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -35,7 +36,7 @@ class Index extends Component {
     }
 
     getTotalUsers = (token) => {
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/users/', {
+        fetch(routeAPI + 'users/', {
             method: 'GET',
             headers: {'Authorization': token},
         })
@@ -60,7 +61,7 @@ class Index extends Component {
     Deactivate = (e) => {
         e.preventDefault();
         let user = this.state.data.user;
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/users/' + user.uid, {
+        fetch(routeAPI + 'users/' + user.uid, {
             method: "PUT",
             headers: {'Authorization': this.state.tokenACP},
             body: {
@@ -91,7 +92,7 @@ class Index extends Component {
 
     deleteConfirm = (e) => {
         e.preventDefault();
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/users/' + this.state.data.user.uid, {
+        fetch(routeAPI + 'users/' + this.state.data.user.uid, {
             method: "DEL",
             headers: {'Authorization': this.state.tokenACP},
         })
@@ -109,7 +110,6 @@ class Index extends Component {
     };
 
     handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
         let endRange = 10*pageNumber;
         let startRange = endRange-10;
 

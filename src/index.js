@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import configureStore, { history } from "./redux/store/defaultStore";
 
 let store = configureStore();
+export const routeAPI = "http://localhost:5000/pyxy-f84e8/us-central1/api/";
 
 ReactDOM.render(
     <Provider store={store}>

@@ -5,9 +5,9 @@ import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faUserEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Gravatar from 'react-gravatar';
 import Pagination from "react-pagination-bootstrap";
 import Toasts from "./Toasts";
+import {routeAPI} from "../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -35,7 +35,7 @@ class Categories extends Component {
     }
 
     getTotalCategories = (token) => {
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/categories/', {
+        fetch(routeAPI + 'categories/', {
             method: 'GET',
             headers: {'Authorization': token},
         })
@@ -59,7 +59,7 @@ class Categories extends Component {
 
     deleteConfirm = (e) => {
         e.preventDefault();
-        fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/categories/' + this.state.data.user.uid, {
+        fetch(routeAPI + 'categories/' + this.state.data.user.uid, {
             method: "DEL",
             headers: {'Authorization': this.state.tokenACP},
         })
@@ -77,7 +77,6 @@ class Categories extends Component {
     };
 
     handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
         let endRange = 10*pageNumber;
         let startRange = endRange-10;
 
