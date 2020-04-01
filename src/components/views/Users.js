@@ -28,7 +28,9 @@ class Index extends Component {
             activePage: '1',
             startRange: '0',
             endRange: '10',
-            showToast: false
+            showToast: false,
+            toastMessage: '',
+            toastType: ''
         };
     }
 
@@ -70,11 +72,17 @@ class Index extends Component {
                 disabled: true
             }
         })
-            .then(response =>
-                console.log(response)
-            )
+            .then(r => {
+                this.setState({
+                    toastMessage: 'User update with success !',
+                    toastType: 'success'
+                })
+            })
             .catch(e => {
-                console.error(e.message);
+                this.setState({
+                    toastMessage: 'An error occurred while updating the user: ' + e.message,
+                    toastType: 'error'
+                });
             });
         this.handleClose();
         this.showToasts();
@@ -204,7 +212,7 @@ class Index extends Component {
                         </Modal>
                     </Card.Body>
                 </Card>
-                <Toasts showT={this.state.showToast} message={'User has been deleted with success!'} type={'success'}/>
+                <Toasts showT={this.state.showToast} message={this.state.toastMessage} type={this.state.toastType}/>
             </div>
         )
     }

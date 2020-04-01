@@ -19,14 +19,14 @@ export default class Toasts extends React.Component {
             case "success":
                 return (
                     <span>
-                        <FontAwesomeIcon icon={faCheckSquare}/>
+                        <FontAwesomeIcon icon={faCheckSquare}/>&nbsp;
                         <strong className="mr-auto">Success !</strong>
                     </span>
                 );
             case "error":
                 return (
                     <span>
-                        <FontAwesomeIcon icon={faTimesCircle}/>
+                        <FontAwesomeIcon icon={faTimesCircle}/>&nbsp;
                             <strong className="mr-auto">Error !</strong>
                         </span>
                 );
@@ -41,7 +41,7 @@ export default class Toasts extends React.Component {
 
     render(){
         return (
-            <Toast show={this.props.showT}>
+            <Toast show={this.props.showT} className={this.props.type}>
                 <Toast.Header>
                     {this.returnTitle(this.props.type)}
                     {/*<small>{this.state.startTime - this.state.curTime}s ago</small>*/}
