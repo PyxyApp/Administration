@@ -11,6 +11,7 @@ import Menu from './components/containers/Menu';
 import ProfileSettings from './components/containers/ProfileSettings';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from "./components/containers/Users";
+import CreateData from "./components/containers/CreateData";
 
 const App = ({history}) => {
         return (
@@ -18,6 +19,7 @@ const App = ({history}) => {
                 <Route path="/" component={Header}/>
                 <Route exact path="/" component={Index}/>
                 <Route exact path="/users" component={Users}/>
+                <Route exact path="/createData" component={CreateData}/>
                 <Route exact path="/categories" component={Categories}/>
                 <Route exact path="/lists" component={Lists}/>
                 <Route exact path="/tasks" component={Tasks}/>

@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import {Badge, Image, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons'
+import {faBell, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons'
+import {faFly} from '@fortawesome/free-brands-svg-icons'
 import {Link} from "react-router-dom";
 
 class Header extends Component {
@@ -22,7 +23,7 @@ class Header extends Component {
         } else {
             return (
                 <Navbar fixed="top">
-                    <Navbar.Brand href="#home">PYXY</Navbar.Brand>
+                    <Navbar.Brand href="#home"><FontAwesomeIcon icon={faFly} className={"color-danger"}/> PYXY</Navbar.Brand>
                     {/* Remove display user during front dev */}
                     {/*<NavDropdown title={(user.displayName !== null) ? (user.displayName) : (user.email)} id="basic-nav-dropdown">*/}
                     <Nav className="mr-auto">

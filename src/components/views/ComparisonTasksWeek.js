@@ -24,7 +24,7 @@ class ComparisonTasksWeek extends Component {
     render() {
         return <div>
             {week.map((day, index) =>
-                <div className={"mt-3"}>
+                <div className={"mt-3"} key={index}>
                     <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
                         <span>{day}</span>
                     </Card.Subtitle>

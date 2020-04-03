@@ -3,12 +3,13 @@ import {Button, ButtonGroup, Card, Modal, Spinner, Table} from "react-bootstrap"
 import {firebaseConfig} from "../../firebaseConfig";
 import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
-import {faUserEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faUserEdit, faTimes, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Gravatar from 'react-gravatar';
 import Pagination from "react-pagination-bootstrap";
 import Toasts from "./Toasts";
 import {routeAPI} from "../../index";
+import {Link} from "react-router-dom";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -129,6 +130,13 @@ class Index extends Component {
                 <Card>
                     <Card.Header>
                         Users
+                        <div className={'card-header-right'}>
+                            <Link to={'/createData'}>
+                                <Button size={"sm"} variant={"success"}>
+                                    <FontAwesomeIcon icon={faUserPlus}/> Create data
+                                </Button>
+                            </Link>
+                        </div>
                     </Card.Header>
                     <Card.Body className="d-flex justify-content-center">
                         {!this.state.load ?

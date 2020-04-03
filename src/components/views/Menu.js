@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {ListGroup} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
+import {faUser, faFolder, faFlag, faClipboardList, faClipboard, faTachometerAlt} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 class Header extends Component {
 
     constructor(props) {
@@ -19,34 +21,34 @@ class Header extends Component {
                     <ListGroup variant="flush" defaultActiveKey="#link1">
                         <NavLink exact to={'/'} activeClassName="active">
                             <ListGroup.Item>
-                                Dashboard
+                                <FontAwesomeIcon icon={faTachometerAlt}/> Dashboard
                             </ListGroup.Item>
                         </NavLink>
                         <h3>Data</h3>
                         <NavLink to={"/users"} activeClassName="active">
                             <ListGroup.Item>
-                                Users
+                                <FontAwesomeIcon icon={faUser}/> Users
                             </ListGroup.Item>
                         </NavLink>
                         <NavLink to={"/categories"} activeClassName="active">
                             <ListGroup.Item>
-                                Categories
+                                <FontAwesomeIcon icon={faFolder}/> Categories
                             </ListGroup.Item>
                         </NavLink>
                         <NavLink to="/lists" activeClassName="active">
                             <ListGroup.Item>
-                                Lists
+                                <FontAwesomeIcon icon={faClipboard}/> Lists
                             </ListGroup.Item>
                         </NavLink>
                         <NavLink to={"/tasks"} activeClassName="active">
                             <ListGroup.Item>
-                                Tasks
+                                <FontAwesomeIcon icon={faClipboardList}/> Tasks
                             </ListGroup.Item>
                         </NavLink>
                         <h3>Moderation</h3>
                         <NavLink to={"/alert"} activeClassName="active">
                             <ListGroup.Item>
-                                Reporting
+                                <FontAwesomeIcon icon={faFlag}/> Reporting
                             </ListGroup.Item>
                         </NavLink>
                     </ListGroup>

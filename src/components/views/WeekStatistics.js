@@ -26,11 +26,13 @@ class WeekStatistics extends Component {
             nbRegisterThisWeek: "",
             nbMale: "",
             nbMalePercent: "",
-            weekStats: []
+            weekStats: [],
+            weekTimestamp: ""
         };
+        this.getWeekTimestamp();
     }
 
-    getStats = () => {
+    getWeekTimestamp = () =>{
         let curr = new Date();
         let week = [];
 
@@ -44,7 +46,12 @@ class WeekStatistics extends Component {
             // let newDay = new Date(timestamp);
             week.push({timestamp})
         }
-        const weekTimeStamp = {start: week[0], end: week[0]+601199};
+        this.setState({
+          weekTimestamp: {start: week[0], end: week[0]+601199}
+        })
+    };
+
+    getStats = () => {
         fetch(routeAPI + 'users/', {
             headers: {
                 'Authorization': this.state.tokenACP
@@ -53,10 +60,10 @@ class WeekStatistics extends Component {
         .then(response => response.json())
             .then(json => {
                 if(json){
-                    const registerByWeek = json.filter(user => (user.date.date_created._seconds <= weekTimeStamp.end))
-                        .filter(user => (user.date.date_created._seconds >= weekTimeStamp.start));
-                    const ActiveByWeek = json.filter(user => (user.date.last_login._seconds <= weekTimeStamp.end))
-                        .filter(user => (user.date.last_login._seconds >= weekTimeStamp.start));
+                    const registerByWeek = json.filter(user => (user.date.date_created._seconds <= this.state.weekTimeStamp.end))
+                        .filter(user => (user.date.date_created._seconds >= this.state.weekTimeStamp.start));
+                    const ActiveByWeek = json.filter(user => (user.date.last_login._seconds <= this.state.weekTimeStamp.end))
+                        .filter(user => (user.date.last_login._seconds >= this.state.weekTimeStamp.start));
                     const resultGender = json.filter(user => user.gender === 'm');
                     this.setState({
                         nbUsers: json.length,
