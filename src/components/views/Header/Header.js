@@ -1,6 +1,5 @@
-// import * as firebase from "firebase";
 import React, { Component } from 'react';
-import {Badge, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBell, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
 import {faFly} from '@fortawesome/free-brands-svg-icons';
