@@ -4,6 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import Index from './components/containers/Index';
 import Categories from './components/containers/Categories';
 import Lists from './components/containers/Lists';
+import ListData from './components/containers/ListData';
 import Tasks from './components/containers/Tasks';
 import Login from './components/containers/Login';
 import Header from './components/containers/Header';
@@ -19,6 +20,7 @@ const App = ({history}) => {
                 <Route path="/" component={Header}/>
                 <Route exact path="/" component={Index}/>
                 <Route exact path="/users" component={Users}/>
+                <Route path="/list/:data" component={ListData}/>
                 <Route exact path="/create-user" component={CreateUser}/>
                 <Route exact path="/categories" component={Categories}/>
                 <Route exact path="/lists" component={Lists}/>

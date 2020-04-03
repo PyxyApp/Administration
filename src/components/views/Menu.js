@@ -25,22 +25,22 @@ class Header extends Component {
                             </ListGroup.Item>
                         </NavLink>
                         <h3>Data</h3>
-                        <NavLink to={"/users"} activeClassName="active">
+                        <NavLink to={"/list/users"} activeClassName="active">
                             <ListGroup.Item>
                                 <FontAwesomeIcon icon={faUser}/> Users
                             </ListGroup.Item>
                         </NavLink>
-                        <NavLink to={"/categories"} activeClassName="active">
+                        <NavLink to={"/list/categories"} activeClassName="active">
                             <ListGroup.Item>
                                 <FontAwesomeIcon icon={faFolder}/> Categories
                             </ListGroup.Item>
                         </NavLink>
-                        <NavLink to="/lists" activeClassName="active">
+                        <NavLink to="/list/lists" activeClassName="active">
                             <ListGroup.Item>
                                 <FontAwesomeIcon icon={faClipboard}/> Lists
                             </ListGroup.Item>
                         </NavLink>
-                        <NavLink to={"/tasks"} activeClassName="active">
+                        <NavLink to={"/list/tasks"} activeClassName="active">
                             <ListGroup.Item>
                                 <FontAwesomeIcon icon={faClipboardList}/> Tasks
                             </ListGroup.Item>
