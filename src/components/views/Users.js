@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import {Button, ButtonGroup, Modal, Spinner, Table} from "react-bootstrap";
+import {Button, Modal, Table} from "react-bootstrap";
 import {firebaseConfig} from "../../firebaseConfig";
 import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
-import {faUserEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Gravatar from 'react-gravatar';
-import Pagination from "react-pagination-bootstrap";
-import Toasts from "./Toasts";
 import {routeAPI} from "../../index";
+import ButtonGroupAction from "./ButtonGroupAction";
+import Toasts from "./Toasts";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -90,17 +88,6 @@ class Index extends Component {
         this.delayToHide();
     };
 
-    handlePageChange(pageNumber) {
-        let endRange = 10*pageNumber;
-        let startRange = endRange-10;
-
-        this.setState({
-            activePage: pageNumber,
-            startRange: startRange,
-            endRange: endRange
-        });
-    }
-
     render() {
         return (
             <div>
@@ -129,12 +116,7 @@ class Index extends Component {
                                 <td>{user.email}</td>
                                 <td>{user.name.username}</td>
                                 <td>
-                                    <ButtonGroup aria-label="Basic example">
-                                        <Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button>
-                                        <Button variant={"danger"}
-                                                onClick={() => this.setState({isShown: true, data: {user}}
-                                                )}><FontAwesomeIcon icon={faTimes}/></Button>
-                                    </ButtonGroup>
+                                    <ButtonGroupAction/>
                                 </td>
                             </tr>
                         )
@@ -160,6 +142,7 @@ class Index extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
+                <Toasts showT={this.state.showToast} message={this.state.toastMessage} type={this.state.toastType}/>
             </div>
         )
     }
