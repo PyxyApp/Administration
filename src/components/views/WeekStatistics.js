@@ -26,7 +26,7 @@ class WeekStatistics extends Component {
             nbRegisterThisWeek: "",
             nbMale: "",
             nbMalePercent: "",
-            weekStats: [],
+            weekStats: [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}, {"name": "Saturday"}, {"name": "Sunday"}],
             weekTimestamp: "",
             users: [
                 {
@@ -363,7 +363,170 @@ class WeekStatistics extends Component {
                         "firstname": "Bob"
                     }
                 }
-            ]
+            ],
+            tasks: [
+                {
+                    "list": "8CwLiQb1gqjbJujBUhzM",
+                    "name": "Visiter le Taj Mahal",
+                    "is_done": false,
+                    "date": {
+                        "date_done": null,
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "uid": "CjgKE5BUHUBblL1NfSx9",
+                    "is_private": false,
+                    "description": "Passer une semaine en Inde et passer une demie journée dans le Taj Mahal"
+                },
+                {
+                    "list": "Rx4PMu7a1xeuVft3YnG4",
+                    "name": "Fumer un cigare cubain",
+                    "is_done": true,
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        },
+                        "date_done": null
+                    },
+                    "uid": "Gys1MrACoEggsO14PExN",
+                    "is_private": true,
+                    "description": ""
+                },
+                {
+                    "description": "Tester de le faire dans un avion",
+                    "list": "hLJaIzPAoq2YMgbiP2pG",
+                    "name": "le faire dans un avion",
+                    "is_done": false,
+                    "date": {
+                        "date_done": null,
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "uid": "N7nua4zTzYPOqNrJo3lh",
+                    "is_private": true
+                },
+                {
+                    "description": "Faire l'amour sur mon lieu de travail",
+                    "list": "hLJaIzPAoq2YMgbiP2pG",
+                    "date_done": null,
+                    "name": "ken au bureau",
+                    "is_done": false,
+                    "uid": "NOEgCQs9R39jrBo5HiXk",
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "is_private": true
+                },
+                {
+                    "description": "Prendre des cours de guitare acoustique",
+                    "list": "Rx4PMu7a1xeuVft3YnG4",
+                    "date_done": null,
+                    "name": "Apprendre la guitare",
+                    "is_done": false,
+                    "uid": "luy94uERHRq3yrRy7gOh",
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "is_private": false
+                },
+                {
+                    "description": "",
+                    "list": "hLJaIzPAoq2YMgbiP2pG",
+                    "date_done": null,
+                    "name": "Tester dans un lieu public",
+                    "is_done": true,
+                    "uid": "pS7n2pajU6gwyRmOCILO",
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "is_private": true
+                },
+                {
+                    "description": "Faire l'amour dans les vestiaires d'un magasin",
+                    "list": "hLJaIzPAoq2YMgbiP2pG",
+                    "date_done": null,
+                    "name": "Le faire dans les cabines d'essayages",
+                    "is_done": false,
+                    "qp43uyb4sEUOWKL6hSAw": "uid",
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "is_private": true
+                },
+                {
+                    "list": "Rx4PMu7a1xeuVft3YnG4",
+                    "date_done": null,
+                    "name": "tester le karaoké",
+                    "is_done": false,
+                    "uid": "vZPjQ84WGkDHBbDqJ44c",
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583924400,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "is_private": false,
+                    "description": "Aller dans un bar karaoké avec des amis et chanter au moins 3 chansons"
+                }
+            ],
+            lists: [
+                {
+                    "is_active": true,
+                    "user": "4HvxlQiUnEguv2GOs0dPnuyTznJ3",
+                    "uid": "8CwLiQb1gqjbJujBUhzM",
+                    "is_private": false,
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583838000,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "title": "Voyage"
+                },
+                {
+                    "user": "4HvxlQiUnEguv2GOs0dPnuyTznJ3",
+                    "uid": "Rx4PMu7a1xeuVft3YnG4",
+                    "is_private": false,
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583838000,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "title": "loisirs",
+                    "is_active": true
+                },
+                {
+                    "title": "sexe",
+                    "is_active": true,
+                    "user": "4HvxlQiUnEguv2GOs0dPnuyTznJ3",
+                    "uid": "hLJaIzPAoq2YMgbiP2pG",
+                    "is_private": true,
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583838000,
+                            "_nanoseconds": 0
+                        }
+                    }
+                }
+            ],
         };
     }
 
@@ -400,18 +563,25 @@ class WeekStatistics extends Component {
             timestamp /= 1000;
             let endTimestamp = timestamp + 24 * 3600 - 1;
             week.push({start: timestamp, end: endTimestamp});
-            // const activeByDay = this.state.users.filter(user => (user.date.last_login._seconds <= week[i].end))
-            //     .filter(user => (user.date.last_login._seconds >= week[i].start));
-            console.log(week);
+        }
+        console.log(week)
+        for(let i=0; i<=6; i++){
+            const activeUsersByDay = this.state.users.filter(user => (user.date.last_login._seconds <= week[i].end))
+                .filter(user => (user.date.last_login._seconds >= week[i].start));
+            const newUsersByDay = this.state.users.filter(user => (user.date.date_created._seconds <= week[i].end))
+                .filter(user => (user.date.date_created._seconds >= week[i].start));
+            const newTasksByDay = this.state.tasks.filter(task => (task.date.date_created._seconds <= week[i].end))
+                .filter(task => (task.date.date_created._seconds >= week[i].start));
+            const newListsByDay = this.state.lists.filter(list => (list.date.date_created._seconds <= week[i].end))
+                .filter(list => (list.date.date_created._seconds >= week[i].start));
+            this.state.weekStats[i].activeUsers = activeUsersByDay.length;
+            this.state.weekStats[i].newUsers = newUsersByDay.length;
+            this.state.weekStats[i].newTasks = newTasksByDay.length;
+            this.state.weekStats[i].newLists = newListsByDay.length;
         }
 
-        // const registerByWeek = this.state.users.filter(user => (user.date.date_created._seconds <= this.state.weekTimeStamp.end))
-        //     .filter(user => (user.date.date_created._seconds >= this.state.weekTimeStamp.start));
-        // const ActiveByWeek = this.state.users.filter(user => (user.date.last_login._seconds <= this.state.weekTimeStamp.end))
-        //     .filter(user => (user.date.last_login._seconds >= this.state.weekTimeStamp.start));
+        console.log(this.state);
         const resultGender = this.state.users.filter(user => user.gender === 'm');
-        // console.log(resultGender);
-        // console.log(resultGender.length);
         this.setState({
             nbUsers: this.state.users.length,
             nbMale: resultGender.length,
@@ -431,15 +601,15 @@ class WeekStatistics extends Component {
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">Current week</Card.Subtitle>
                     <div className="d-flex flex-row justify-content-between">
-                        <SmallGraph title={'New users'} type={'newUsers'}/>
-                        <SmallGraph title={'Active users'} type={'activeUsers'}/>
-                        <SmallGraph title={'List created'} type={'listCreated'}/>
-                        <SmallGraph title={'Task created'} type={'taskCreated'}/>
+                        <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
+                        <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
+                        <SmallGraph title={'List created'} type={'newLists'} stats={this.state.weekStats}/>
+                        <SmallGraph title={'Task created'} type={'newTasks'} stats={this.state.weekStats}/>
                     </div>
                     <hr/>
                     <div className="d-flex flex-row">
                         <div className="d-flex flex-column w-50">
-                            <ComparisonTasksWeek/>
+                            <ComparisonTasksWeek />
                         </div>
                         <div className="d-flex flex-column w-50 p-3">
                             <div className="p-1">
