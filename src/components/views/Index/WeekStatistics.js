@@ -35,56 +35,35 @@ class WeekStatistics extends Component {
 
     async componentDidMount() {
         await fetch(routeAPI + 'users/', {
-            headers: {
-                'Authorization': this.state.tokenACP
-            },
-        })
-        .then(response => response.json())
+            headers: { 'Authorization': this.state.tokenACP},
+        }).then(response => response.json())
             .then(json => {
                 if(json){
-                    this.setState({
-                        nbUsers: json.length,
-                        users: json
-                    });
+                    this.setState({ nbUsers: json.length, users: json});
                 }
-            })
-            .catch(e =>{
-                console.log(e)
             });
         await fetch(routeAPI + 'tasks/', {
-            headers: {
-                'Authorization': this.state.tokenACP
-            },
-        })
-            .then(response => response.json())
+            headers: { 'Authorization': this.state.tokenACP },
+        }).then(response => response.json())
             .then(json => {
                 if(json){
-                    this.setState({
-                        tasks: json
-                    });
+                    this.setState({ tasks: json });
                 }
-            })
-            .catch(e =>{
-                console.log(e)
             });
         await fetch(routeAPI + 'lists/', {
-            headers: {
-                'Authorization': this.state.tokenACP
-            },
-        })
-            .then(response => response.json())
+            headers: { 'Authorization': this.state.tokenACP },
+        }).then(response => response.json())
             .then(json => {
                 if(json){
-                    this.setState({
-                        lists: json,
-                        apiLoaded: true
-                    });
+                    this.setState({ lists: json, apiLoaded: true });
                 }
-            })
-            .catch(e =>{
-                console.log(e)
-            })
+            });
     }
+
+    filterData = (collection, field, i, week) => {
+        return this.state[collection].filter(data => (data.date[field] ? (data.date[field]._seconds <= week[i].end) : 0))
+            .filter(data => (data.date[field]._seconds >= week[i].start))
+    };
 
     getStats = () =>{
         let curr = new Date();
@@ -100,16 +79,13 @@ class WeekStatistics extends Component {
             week.push({start: timestamp, end: endTimestamp});
         }
         for(let i=0; i<=6; i++){
-            const activeUsersByDay = this.state.users.filter(user => (user.date.last_login._seconds <= week[i].end))
-                .filter(user => (user.date.last_login._seconds >= week[i].start));
-            const newUsersByDay = this.state.users.filter(user => (user.date.date_created._seconds <= week[i].end))
-                .filter(user => (user.date.date_created._seconds >= week[i].start));
-            const tasksDoneByDay = this.state.tasks.filter(task => task.date.date_done ? (task.date.date_done._seconds <= week[i].end)
-                .filter(task => (task.date.date_done._seconds >= week[i].start)) : 0);
-            const newTasksByDay = this.state.tasks.filter(task => (task.date.date_created._seconds <= week[i].end))
-                .filter(task => (task.date.date_created._seconds >= week[i].start));
-            const newListsByDay = this.state.lists.filter(list => (list.date.date_created._seconds <= week[i].end))
-                .filter(list => (list.date.date_created._seconds >= week[i].start));
+
+            const activeUsersByDay = this.filterData("users", "last_login", i, week);
+            const newUsersByDay = this.filterData("users", "date_created", i, week);
+            const tasksDoneByDay = this.filterData("tasks", "date_done", i, week);
+            const newTasksByDay = this.filterData("tasks", "date_created", i, week);
+            const newListsByDay = this.filterData("lists", "date_created", i, week);
+
             this.state.weekStats[i].activeUsers = activeUsersByDay.length;
             this.state.weekStats[i].newUsers = newUsersByDay.length;
             this.state.weekStats[i].newTasks = newTasksByDay.length;
@@ -128,10 +104,7 @@ class WeekStatistics extends Component {
 
     render(){
         if(this.state.apiLoaded){
-            if(!this.state.isLoaded){
-                this.getStats();
-                console.log("here");
-            }
+            if(!this.state.isLoaded){ this.getStats() }
         }
         return(
             <Card className={"mt-3"}>
@@ -151,8 +124,7 @@ class WeekStatistics extends Component {
                         <div className="d-flex flex-column w-50">
                             <ComparisonTasksWeek stats={this.state.weekStats} statsGlobalUsers={this.state.users} statsGlobalTasks={this.state.tasks}/>
                         </div>
-                        {this.state.nbUsers ? ( <GenderStatistics nbUsers={this.state.nbUsers} nbMale={this.state.nbMale}/>)
-                            : (<Loading />)}
+                        {this.state.nbUsers ? ( <GenderStatistics nbUsers={this.state.nbUsers} nbMale={this.state.nbMale}/>) : (<Loading />)}
                     </div>
                 </Card.Body>
             </Card>
