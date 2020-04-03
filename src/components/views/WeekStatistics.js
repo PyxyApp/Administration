@@ -570,6 +570,8 @@ class WeekStatistics extends Component {
                 .filter(user => (user.date.last_login._seconds >= week[i].start));
             const newUsersByDay = this.state.users.filter(user => (user.date.date_created._seconds <= week[i].end))
                 .filter(user => (user.date.date_created._seconds >= week[i].start));
+            const tasksDoneByDay = this.state.tasks.filter(task => task.date.date_done ? (task.date.date_done._seconds <= week[i].end)
+                .filter(task => (task.date.date_done._seconds >= week[i].start)) : 0);
             const newTasksByDay = this.state.tasks.filter(task => (task.date.date_created._seconds <= week[i].end))
                 .filter(task => (task.date.date_created._seconds >= week[i].start));
             const newListsByDay = this.state.lists.filter(list => (list.date.date_created._seconds <= week[i].end))
@@ -578,6 +580,7 @@ class WeekStatistics extends Component {
             this.state.weekStats[i].newUsers = newUsersByDay.length;
             this.state.weekStats[i].newTasks = newTasksByDay.length;
             this.state.weekStats[i].newLists = newListsByDay.length;
+            this.state.weekStats[i].tasksDone = tasksDoneByDay.length;
         }
 
         console.log(this.state);
@@ -609,7 +612,7 @@ class WeekStatistics extends Component {
                     <hr/>
                     <div className="d-flex flex-row">
                         <div className="d-flex flex-column w-50">
-                            <ComparisonTasksWeek />
+                            <ComparisonTasksWeek stats={this.state.weekStats} statsGlobalUsers={this.state.users} statsGlobalTasks={this.state.tasks}/>
                         </div>
                         <div className="d-flex flex-column w-50 p-3">
                             <div className="p-1">

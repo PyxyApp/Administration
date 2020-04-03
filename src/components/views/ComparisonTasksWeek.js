@@ -1,36 +1,41 @@
 import React, {Component} from "react";
-import {Card, ProgressBar} from "react-bootstrap";
-
-const week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-const data = [
-    {activeUsers: 2, taskFinished: 1},
-    {activeUsers: 5, taskFinished: 3},
-    {activeUsers: 4, taskFinished: 2},
-    {activeUsers: 3, taskFinished: 4},
-    {activeUsers: 4, taskFinished: 2},
-    {activeUsers: 7, taskFinished: 2},
-    {activeUsers: 6, taskFinished: 1},
-];
-
-
+import {Badge, Card, ProgressBar} from "react-bootstrap";
 
 class ComparisonTasksWeek extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            data: this.props.stats
+        };
     }
 
     render() {
         return <div>
-            {week.map((day, index) =>
+            {this.state.data.map((day, index) =>
                 <div className={"mt-3"} key={index}>
                     <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
-                        <span>{day}</span>
+                        <span>{day.name}</span>
+                        <span>
+                            <Badge variant={"primary"}>
+                                +{Math.trunc((100*(this.props.statsGlobalUsers.length + day.activeUsers)) / this.props.statsGlobalUsers.length)-100}% (+{day.activeUsers})
+                            </Badge>
+                            &nbsp;
+                            <Badge variant={"danger"}>
+                                +{Math.trunc((100*(this.props.statsGlobalTasks.length + day.tasksDone)) / this.props.statsGlobalTasks.length)-100}% (+{day.tasksDone})
+                            </Badge>
+                        </span>
                     </Card.Subtitle>
-                    <ProgressBar now={data[index].activeUsers}  variant="primary" srOnly/>
-                    <ProgressBar now={data[index].taskFinished} variant="danger" srOnly/>
+                    <ProgressBar now={Math.trunc((100*(this.props.statsGlobalUsers.length + day.activeUsers)) / this.props.statsGlobalUsers.length)-100}  variant="primary"/>
+                    <ProgressBar now={Math.trunc((100*(this.props.statsGlobalTasks.length + day.tasksDone)) / this.props.statsGlobalTasks.length)-100} variant="danger"/>
                 </div>)}
+            <Badge variant={"primary"}>
+                User Active
+            </Badge>
+            &nbsp;
+            <Badge variant={"danger"}>
+                Tasks Done
+            </Badge>
         </div>
     }
 }
