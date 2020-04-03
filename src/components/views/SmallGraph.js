@@ -25,9 +25,9 @@ class SmallGraph extends Component {
               return "#63c2de";
           case "activeUsers":
               return "#f86c6b";
-          case "listCreated":
+          case "newLists":
               return "#ffc107";
-          case "taskCreated":
+          case "newTasks":
               return "#4dbd74";
           default:
               return "#63c2de"
