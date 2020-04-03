@@ -15,349 +15,12 @@ jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
     this.setState({tokenACP: token}).catch(err)(console.error(err.message));
 });
 
-const users = [
-    {
-        "date": {
-            "date_created": {
-                "_seconds": 1585700315,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585700315,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "2BgVXcoNbgVA11lpC9Yqz9p6jHo1",
-        "nat": "fr",
-        "gender": "m",
-        "email": "Michel@gmail.com",
-        "name": {
-            "lastname": "Blanc",
-            "firstname": "Michel",
-            "username": "WhiteMichou"
-        }
-    },
-    {
-        "gender": "f",
-        "name": {
-            "lastname": "Baulan",
-            "firstname": "Louise",
-            "username": "Fayah"
-        },
-        "email": "louise.baulan@gmail.com",
-        "uid": "4HvxlQiUnEguv2GOs0dPnuyTznJ3",
-        "acp": {
-            "admin": true
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1583751600,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585546140,
-                "_nanoseconds": 0
-            }
-        }
-    },
-    {
-        "nat": "fr",
-        "gender": "f",
-        "email": "marie.mantoni16@gmail.com",
-        "name": {
-            "lastname": "Mantoni",
-            "firstname": "Marie",
-            "username": "ArieM"
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585700442,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585700442,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "6A1vMXsVvWhNn2Pf0fRi9kL6sQr2"
-    },
-    {
-        "email": "nicolas.notararigo@gmail.com",
-        "name": {
-            "lastname": "Notararigo",
-            "firstname": "Nicolas",
-            "username": "Neerfix"
-        },
-        "uid": "74xSBlBejXfAPHoBPNBODVglwox2",
-        "acp": {
-            "admin": true
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585648800,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585546140,
-                "_nanoseconds": 0
-            }
-        },
-        "gender": "m"
-    },
-    {
-        "gender": "m",
-        "email": "user3@gmail.com",
-        "name": {
-            "lastname": "Paul",
-            "firstname": "Jean",
-            "username": "user3"
-        },
-        "date": {
-            "last_login": {
-                "_seconds": 1585701959,
-                "_nanoseconds": 0
-            },
-            "date_created": {
-                "_seconds": 1585701959,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "EfRhYKrI4aM4NfbtO8qUIGauavG2",
-        "nat": "fr"
-    },
-    {
-        "email": "ni@gmail.com",
-        "name": {
-            "lastname": "Putiev",
-            "firstname": "Nikolaii",
-            "username": "Nikolai"
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585924239,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585924239,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "I5jxlXGGeeWY6Wt2QcLKfZNxjyc2",
-        "nat": "RU",
-        "gender": "m"
-    },
-    {
-        "email": "jarhide@gmail.com",
-        "name": {
-            "firstname": "Jean-Michel",
-            "username": "JM-LaRafle",
-            "lastname": "LaRafle"
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585701285,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585701285,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "QDaOfX3pjFMNGJ3oXN9Y9DdKIQV2",
-        "nat": "fr",
-        "gender": "m"
-    },
-    {
-        "date": {
-            "last_login": {
-                "_seconds": 1585925817,
-                "_nanoseconds": 0
-            },
-            "date_created": {
-                "_seconds": 1585925817,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "RJGrcGqjJpdtLnsUrv0T4hJVyEt1",
-        "nat": "FR",
-        "gender": "f",
-        "email": "Michemiche@gmail.com",
-        "name": {
-            "firstname": "Michelle",
-            "username": "PetitKiou",
-            "lastname": "Laroche"
-        }
-    },
-    {
-        "date": {
-            "date_created": {
-                "_seconds": 1585701942,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585701942,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "Va4IS17xVEdSw38zf0lFdIahds62",
-        "nat": "fr",
-        "gender": "m",
-        "email": "user2@gmail.com",
-        "name": {
-            "lastname": "Inspiration",
-            "firstname": "Manque",
-            "username": "user2"
-        }
-    },
-    {
-        "email": "solenne.bertrand74@gmail.com",
-        "name": {
-            "username": "Principessa74",
-            "lastname": "Bertrand",
-            "firstname": "Solenne"
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585700385,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585700385,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "fJ93XaqMrsgwJJZHt92gd73xKpA3",
-        "nat": "fr",
-        "gender": "f"
-    },
-    {
-        "date": {
-            "date_created": {
-                "_seconds": 1585701630,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585701630,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "kMh77LFxzuPT4iPkAj9nb5MNoMI3",
-        "nat": "fr",
-        "gender": "m",
-        "email": "artoook@gmail.com",
-        "name": {
-            "lastname": "Lugansky",
-            "firstname": "Nikolaï",
-            "username": "Lugansky.N"
-        }
-    },
-    {
-        "email": "user1@gmail.com",
-        "name": {
-            "lastname": "Sebastien",
-            "firstname": "Marc",
-            "username": "user1"
-        },
-        "date": {
-            "date_created": {
-                "_seconds": 1585701925,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585701925,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "ta8qznDfwXWW8JOkwmTNo3izFWm1",
-        "nat": "fr",
-        "gender": "m"
-    },
-    {
-        "gender": "f",
-        "email": "Sophie@gmail.com",
-        "name": {
-            "lastname": "Blanc",
-            "firstname": "Sophie",
-            "username": "Principessa"
-        },
-        "date": {
-            "last_login": {
-                "_seconds": 1585700356,
-                "_nanoseconds": 0
-            },
-            "date_created": {
-                "_seconds": 1585700356,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "uV3X41NFwbdcf8gWnkC5mxE7V9f1",
-        "nat": "fr"
-    },
-    {
-        "date": {
-            "date_created": {
-                "_seconds": 1585700144,
-                "_nanoseconds": 0
-            },
-            "last_login": {
-                "_seconds": 1585700144,
-                "_nanoseconds": 0
-            }
-        },
-        "acp": {
-            "admin": false
-        },
-        "uid": "wr3e6bAdwjft6bKMESOCIfZNACX2",
-        "nat": "fr",
-        "gender": "m",
-        "email": "bob@gmail.com",
-        "name": {
-            "username": "bob3lettres",
-            "lastname": "Qurklande",
-            "firstname": "Bob"
-        }
-    }
-];
-
 class WeekStatistics extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            load: false,
+            isLoaded: false,
             tokenACP: "",
             nbUsers: "",
             nbRegisterThisWeek: "",
@@ -365,7 +28,342 @@ class WeekStatistics extends Component {
             nbMalePercent: "",
             weekStats: [],
             weekTimestamp: "",
-            users: [users]
+            users: [
+                {
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585700315,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585700315,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "2BgVXcoNbgVA11lpC9Yqz9p6jHo1",
+                    "nat": "fr",
+                    "gender": "m",
+                    "email": "Michel@gmail.com",
+                    "name": {
+                        "lastname": "Blanc",
+                        "firstname": "Michel",
+                        "username": "WhiteMichou"
+                    }
+                },
+                {
+                    "gender": "f",
+                    "name": {
+                        "lastname": "Baulan",
+                        "firstname": "Louise",
+                        "username": "Fayah"
+                    },
+                    "email": "louise.baulan@gmail.com",
+                    "uid": "4HvxlQiUnEguv2GOs0dPnuyTznJ3",
+                    "acp": {
+                        "admin": true
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1583751600,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585546140,
+                            "_nanoseconds": 0
+                        }
+                    }
+                },
+                {
+                    "nat": "fr",
+                    "gender": "f",
+                    "email": "marie.mantoni16@gmail.com",
+                    "name": {
+                        "lastname": "Mantoni",
+                        "firstname": "Marie",
+                        "username": "ArieM"
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585700442,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585700442,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "6A1vMXsVvWhNn2Pf0fRi9kL6sQr2"
+                },
+                {
+                    "email": "nicolas.notararigo@gmail.com",
+                    "name": {
+                        "lastname": "Notararigo",
+                        "firstname": "Nicolas",
+                        "username": "Neerfix"
+                    },
+                    "uid": "74xSBlBejXfAPHoBPNBODVglwox2",
+                    "acp": {
+                        "admin": true
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585648800,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585546140,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "gender": "m"
+                },
+                {
+                    "gender": "m",
+                    "email": "user3@gmail.com",
+                    "name": {
+                        "lastname": "Paul",
+                        "firstname": "Jean",
+                        "username": "user3"
+                    },
+                    "date": {
+                        "last_login": {
+                            "_seconds": 1585701959,
+                            "_nanoseconds": 0
+                        },
+                        "date_created": {
+                            "_seconds": 1585701959,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "EfRhYKrI4aM4NfbtO8qUIGauavG2",
+                    "nat": "fr"
+                },
+                {
+                    "email": "ni@gmail.com",
+                    "name": {
+                        "lastname": "Putiev",
+                        "firstname": "Nikolaii",
+                        "username": "Nikolai"
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585924239,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585924239,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "I5jxlXGGeeWY6Wt2QcLKfZNxjyc2",
+                    "nat": "RU",
+                    "gender": "m"
+                },
+                {
+                    "email": "jarhide@gmail.com",
+                    "name": {
+                        "firstname": "Jean-Michel",
+                        "username": "JM-LaRafle",
+                        "lastname": "LaRafle"
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585701285,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585701285,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "QDaOfX3pjFMNGJ3oXN9Y9DdKIQV2",
+                    "nat": "fr",
+                    "gender": "m"
+                },
+                {
+                    "date": {
+                        "last_login": {
+                            "_seconds": 1585925817,
+                            "_nanoseconds": 0
+                        },
+                        "date_created": {
+                            "_seconds": 1585925817,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "RJGrcGqjJpdtLnsUrv0T4hJVyEt1",
+                    "nat": "FR",
+                    "gender": "f",
+                    "email": "Michemiche@gmail.com",
+                    "name": {
+                        "firstname": "Michelle",
+                        "username": "PetitKiou",
+                        "lastname": "Laroche"
+                    }
+                },
+                {
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585701942,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585701942,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "Va4IS17xVEdSw38zf0lFdIahds62",
+                    "nat": "fr",
+                    "gender": "m",
+                    "email": "user2@gmail.com",
+                    "name": {
+                        "lastname": "Inspiration",
+                        "firstname": "Manque",
+                        "username": "user2"
+                    }
+                },
+                {
+                    "email": "solenne.bertrand74@gmail.com",
+                    "name": {
+                        "username": "Principessa74",
+                        "lastname": "Bertrand",
+                        "firstname": "Solenne"
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585700385,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585700385,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "fJ93XaqMrsgwJJZHt92gd73xKpA3",
+                    "nat": "fr",
+                    "gender": "f"
+                },
+                {
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585701630,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585701630,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "kMh77LFxzuPT4iPkAj9nb5MNoMI3",
+                    "nat": "fr",
+                    "gender": "m",
+                    "email": "artoook@gmail.com",
+                    "name": {
+                        "lastname": "Lugansky",
+                        "firstname": "Nikolaï",
+                        "username": "Lugansky.N"
+                    }
+                },
+                {
+                    "email": "user1@gmail.com",
+                    "name": {
+                        "lastname": "Sebastien",
+                        "firstname": "Marc",
+                        "username": "user1"
+                    },
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585701925,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585701925,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "ta8qznDfwXWW8JOkwmTNo3izFWm1",
+                    "nat": "fr",
+                    "gender": "m"
+                },
+                {
+                    "gender": "f",
+                    "email": "Sophie@gmail.com",
+                    "name": {
+                        "lastname": "Blanc",
+                        "firstname": "Sophie",
+                        "username": "Principessa"
+                    },
+                    "date": {
+                        "last_login": {
+                            "_seconds": 1585700356,
+                            "_nanoseconds": 0
+                        },
+                        "date_created": {
+                            "_seconds": 1585700356,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "uV3X41NFwbdcf8gWnkC5mxE7V9f1",
+                    "nat": "fr"
+                },
+                {
+                    "date": {
+                        "date_created": {
+                            "_seconds": 1585700144,
+                            "_nanoseconds": 0
+                        },
+                        "last_login": {
+                            "_seconds": 1585700144,
+                            "_nanoseconds": 0
+                        }
+                    },
+                    "acp": {
+                        "admin": false
+                    },
+                    "uid": "wr3e6bAdwjft6bKMESOCIfZNACX2",
+                    "nat": "fr",
+                    "gender": "m",
+                    "email": "bob@gmail.com",
+                    "name": {
+                        "username": "bob3lettres",
+                        "lastname": "Qurklande",
+                        "firstname": "Bob"
+                    }
+                }
+            ]
         };
     }
 
@@ -390,7 +388,7 @@ class WeekStatistics extends Component {
     //         })
     // }
 
-    async getStats() {
+    getStats = () =>{
         let curr = new Date();
         let week = [];
 
@@ -399,28 +397,32 @@ class WeekStatistics extends Component {
             let day = new Date(curr.setDate(first));
             let timestamp = Date.parse(day);
             timestamp -= (curr.getMilliseconds() + (curr.getSeconds() * 1000) - 1000 + (curr.getMinutes() * 60 * 1000) + (curr.getHours() * 3600 * 1000) );
-            // 601199
             timestamp /= 1000;
-            // let newDay = new Date(timestamp);
-            week.push({timestamp})
+            let endTimestamp = timestamp + 24 * 3600 - 1;
+            week.push({start: timestamp, end: endTimestamp});
+            // const activeByDay = this.state.users.filter(user => (user.date.last_login._seconds <= week[i].end))
+            //     .filter(user => (user.date.last_login._seconds >= week[i].start));
+            console.log(week);
         }
+
+        // const registerByWeek = this.state.users.filter(user => (user.date.date_created._seconds <= this.state.weekTimeStamp.end))
+        //     .filter(user => (user.date.date_created._seconds >= this.state.weekTimeStamp.start));
+        // const ActiveByWeek = this.state.users.filter(user => (user.date.last_login._seconds <= this.state.weekTimeStamp.end))
+        //     .filter(user => (user.date.last_login._seconds >= this.state.weekTimeStamp.start));
+        const resultGender = this.state.users.filter(user => user.gender === 'm');
+        // console.log(resultGender);
+        // console.log(resultGender.length);
         this.setState({
-            weekTimestamp: {start: week[0], end: week[0]+601199}
-        });
-
-
-
-
-
-
-
-
-
-
+            nbUsers: this.state.users.length,
+            nbMale: resultGender.length,
+            isLoaded: true
+        })
     };
 
     render(){
-        // console.log(this.state)
+        if(!this.state.isLoaded){
+            this.getStats();
+        }
         return(
             <Card className={"mt-3"}>
                 <Card.Header>
@@ -444,17 +446,17 @@ class WeekStatistics extends Component {
                                 <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
                                         <span>
                                             <FontAwesomeIcon icon={faVenus} /> Female</span>
-                                    <span className="font-weight-bold">{100 -((this.state.nbMale * 100) / this.state.nbUsers)}%</span>
+                                    <span className="font-weight-bold">{Math.trunc(100 -((this.state.nbMale * 100) / this.state.nbUsers))}%</span>
                                 </Card.Subtitle>
-                                <ProgressBar now={100 -((this.state.nbMale * 100) / this.state.nbUsers)} variant="warning" label="taskCreated" srOnly />
+                                <ProgressBar now={Math.trunc(100 -((this.state.nbMale * 100) / this.state.nbUsers))} variant="warning" label="taskCreated" srOnly />
                             </div>
                             <div className="p-1">
                                 <Card.Subtitle className="mb-2 text-muted d-flex justify-content-between">
                                         <span>
                                             <FontAwesomeIcon icon={faMars} /> Male</span>
-                                    <span className="font-weight-bold">{(this.state.nbMale * 100) / this.state.nbUsers}%</span>
+                                    <span className="font-weight-bold">{Math.trunc((this.state.nbMale * 100) / this.state.nbUsers)}%</span>
                                 </Card.Subtitle>
-                                <ProgressBar now={(this.state.nbMale * 100) / this.state.nbUsers} variant="warning" label="taskCreated" srOnly />
+                                <ProgressBar now={Math.trunc((this.state.nbMale * 100) / this.state.nbUsers)} variant="warning" label="taskCreated" srOnly />
                             </div>
                         </div>
                     </div>
