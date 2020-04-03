@@ -51,13 +51,13 @@ class CreateUser extends Component {
             .then(r => {
                 console.log(r);
                 this.setState({
-                    toastMessage: 'User update with success !',
+                    toastMessage: 'User created with success !',
                     toastType: 'success'
                 })
             })
             .catch(e => {
                 this.setState({
-                    toastMessage: 'An error occurred while updating the user: ' + e.message,
+                    toastMessage: 'An error occurred while creating the user: ' + e.message,
                     toastType: 'error'
                 });
             });
