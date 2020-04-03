@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Header from "../views/Header";
+import Header from "../views/Header/Header";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
