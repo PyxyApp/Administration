@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Index from "../views/Index";
+import Index from "../views/Index/Index";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
