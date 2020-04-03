@@ -131,7 +131,7 @@ class Index extends Component {
                     <Card.Header>
                         Users
                         <div className={'card-header-right'}>
-                            <Link to={'/createData'}>
+                            <Link to={'/create-user'}>
                                 <Button size={"sm"} variant={"success"}>
                                     <FontAwesomeIcon icon={faUserPlus}/> Create data
                                 </Button>
