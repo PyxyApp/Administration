@@ -8,6 +8,7 @@ import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {routeAPI} from "../../../index";
 import Users from "../../containers/Users";
+import Tasks from "../../containers/Tasks";
 import Pagination from "react-pagination-bootstrap";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
@@ -23,17 +24,13 @@ export default class ListData extends Component {
         this.state = {
             page: this.props.location.pathname,
             tokenACP: "",
-            isShown: false,
             isLoading: false,
             dataType: this.props.match.params.data,
             data: [],
             dataId: '',
             activePage: '1',
             startRange: '0',
-            endRange: '10',
-            showToast: false,
-            toastMessage: '',
-            toastType: ''
+            endRange: '10'
         };
     }
 
@@ -72,6 +69,7 @@ export default class ListData extends Component {
     render() {
         const listData = {
             users: <Users data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
+            tasks: <Tasks data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
         };
 
         return (
