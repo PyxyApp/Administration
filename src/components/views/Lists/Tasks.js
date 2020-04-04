@@ -7,6 +7,7 @@ import {faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {routeAPI} from "../../../index";
 import ButtonGroupAction from "./ButtonGroupAction";
+import Loading from "../modules/Loading";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -63,11 +64,7 @@ class Tasks extends Component {
                                 <td>
                                     {!this.state.apiLoaded ?
                                         (
-                                            <span>
-                                                    <Spinner animation="grow"/>
-                                                    <Spinner animation="grow"/>
-                                                    <Spinner animation="grow"/>
-                                                </span>
+                                            <Loading/>
                                         )
                                         :
                                         this.state.lists.map((list, index) => {
