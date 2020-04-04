@@ -10,6 +10,7 @@ import {routeAPI} from "../../../index";
 import Users from "../../containers/Users";
 import Tasks from "../../containers/Tasks";
 import Pagination from "react-pagination-bootstrap";
+import Categories from "./Categories";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -70,6 +71,7 @@ export default class ListData extends Component {
         const listData = {
             users: <Users data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
             tasks: <Tasks data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
+            categories: <Categories data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
         };
 
         return (
