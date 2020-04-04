@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Categories from "../views/Categories";
+import Categories from "../views/Lists/Categories";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {

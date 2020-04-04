@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Button, ButtonGroup, Card, Modal, Spinner, Table} from "react-bootstrap";
-import {firebaseConfig} from "../../firebaseConfig";
-import key from "../../privateKey";
+import {firebaseConfig} from "../../../firebaseConfig";
+import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faUserEdit, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Pagination from "react-pagination-bootstrap";
-import Toasts from "./Toasts";
-import {routeAPI} from "../../index";
+import Toasts from "../modules/Toasts";
+import {routeAPI} from "../../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 

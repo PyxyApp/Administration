@@ -3,7 +3,7 @@ import {Button, Card, Col, Form, InputGroup, Row} from "react-bootstrap";
 import {firebaseConfig} from "../../firebaseConfig";
 import key from "../../privateKey";
 import * as jwt from "jsonwebtoken";
-import Toasts from "./Toasts";
+import Toasts from "./modules/Toasts";
 import {routeAPI} from "../../index";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {Button, Card, Spinner} from "react-bootstrap";
-import {firebaseConfig} from "../../firebaseConfig";
-import key from "../../privateKey";
+import {firebaseConfig} from "../../../firebaseConfig";
+import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {routeAPI} from "../../index";
-import Users from "../containers/Users";
+import {routeAPI} from "../../../index";
+import Users from "../../containers/Users";
 import Pagination from "react-pagination-bootstrap";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;

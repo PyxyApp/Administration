@@ -6,7 +6,7 @@ import {firebaseConfig} from "../../../firebaseConfig";
 import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {routeAPI} from "../../../index";
-import Loading from "../Loading";
+import Loading from "../modules/Loading";
 import GenderStatistics from "./GenderStatistics";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;

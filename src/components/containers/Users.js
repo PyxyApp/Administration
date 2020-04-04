@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import Users from "../views/Users";
+import Users from "../views/Lists/Users";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {

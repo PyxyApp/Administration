@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {Button, Modal, Spinner, Table} from "react-bootstrap";
-import {firebaseConfig} from "../../firebaseConfig";
-import key from "../../privateKey";
+import {firebaseConfig} from "../../../firebaseConfig";
+import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Toasts from "./Toasts";
-import {routeAPI} from "../../index";
+import Toasts from "../modules/Toasts";
+import {routeAPI} from "../../../index";
 import ButtonGroupAction from "./ButtonGroupAction";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;

@@ -2,6 +2,7 @@
   position: fixed;
   top: 58px;
   right: 15px;
+  color: $dark-color;
   &.success{
     border: 1px solid $success-color;
     .toast-header > span{
