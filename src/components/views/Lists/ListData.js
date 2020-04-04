@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import {Button, Card, Spinner} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import {firebaseConfig} from "../../../firebaseConfig";
 import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
@@ -12,6 +12,7 @@ import Tasks from "../../containers/Tasks";
 import Pagination from "react-pagination-bootstrap";
 import Categories from "./Categories";
 import Lists from "./Lists";
+import Loading from "../modules/Loading";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 
@@ -24,10 +25,10 @@ export default class ListData extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: this.props.location.pathname,
+            page: this.props.location.pathname.substr(1),
             tokenACP: "",
             isLoading: false,
-            dataType: this.props.match.params.data,
+            dataType: this.props.location.pathname.substr(1),
             data: [],
             dataId: '',
             activePage: '1',
@@ -92,11 +93,7 @@ export default class ListData extends Component {
                     <Card.Body className="d-flex justify-content-center flex-column">
                         {this.state.data.length !== 0 ? listData[this.state.dataType] :
                             (
-                            <span>
-                                <Spinner animation="grow" />
-                                <Spinner animation="grow" />
-                                <Spinner animation="grow" />
-                            </span>
+                            <Loading/>
                             )}
                         <Pagination
                             totalItemsCount={this.state.data.length}

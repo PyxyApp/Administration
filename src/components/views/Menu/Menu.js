@@ -24,10 +24,10 @@ export default class Menu extends Component {
                         </ListGroup.Item>
                     </NavLink>
                     <h3>Data</h3>
-                        <ListGroupItem to={'/list/users'} dataType={"Users"} icon={faUser}/>
-                        <ListGroupItem to={'/list/categories'} dataType={"Categories"} icon={faFolder}/>
-                        <ListGroupItem to={'/list/lists'} dataType={"Lists"} icon={faClipboard}/>
-                        <ListGroupItem to={'/list/tasks'} dataType={"Tasks"} icon={faClipboardList}/>
+                        <ListGroupItem to={'/users'} dataType={"Users"} icon={faUser}/>
+                        <ListGroupItem to={'/categories'} dataType={"Categories"} icon={faFolder}/>
+                        <ListGroupItem to={'/lists'} dataType={"Lists"} icon={faClipboard}/>
+                        <ListGroupItem to={'/tasks'} dataType={"Tasks"} icon={faClipboardList}/>
                     <h3>Moderation</h3>
                         <ListGroupItem to={'/alert'} dataType={"Reporting"} icon={faFlag}/>
                 </ListGroup>
