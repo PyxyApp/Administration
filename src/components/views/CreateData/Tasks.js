@@ -4,9 +4,8 @@ import {routeAPI} from "../../../index";
 import FieldText from "./FieldText";
 import NationalitySelect from "./NationalitySelect";
 import GenderRadioButton from "./GenderRadioButton";
-import FooterForm from "./FooterForm";
 
-export default class Users extends Component {
+export default class Tasks extends Component {
 
     constructor(props) {
         super(props);
@@ -36,20 +35,21 @@ export default class Users extends Component {
             })
         })
             .then(r => {
-                if(r.ok){
-                    this.setState({
-                        toastMessage: 'User created with success !',
-                        toastType: 'success'
-                    })
-                }else{
-                    this.setState({
-                        toastMessage: 'An error occurred while creating the user: ' + e.message,
-                        toastType: 'error'
-                    });
-                }
+                console.log(r);
+                this.setState({
+                    toastMessage: 'User created with success !',
+                    toastType: 'success'
+                })
+            })
+            .catch(e => {
+                this.setState({
+                    toastMessage: 'An error occurred while creating the user: ' + e.message,
+                    toastType: 'error'
+                });
             });
-        this.props.showToasts();
-        this.props.delayToHide();
+        this.handleClose();
+        this.showToasts();
+        this.delayToHide();
     };
 
     handleChange = (e) => {
@@ -63,19 +63,19 @@ export default class Users extends Component {
         console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"Password"} name={"password"} id={"password"} placeholder={"*******"} type={'password'} handleChange={this.handleChange}/>
+                <FieldText title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'}/>
+                <FieldText title={"Password"} name={"password"} id={"password"} placeholder={"*******"} type={'password'}/>
             </Form.Row>
 
             <Form.Row>
-                <FieldText title={"First name"} name={"firstname"} id={"firstname"} placeholder={"John"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"Last name"} name={"lastname"} id={"lastname"} placeholder={"Doe"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"Username"} name={"username"} id={"username"} placeholder={"JohnDoe"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText title={"First name"} name={"firstname"} id={"firstname"} placeholder={"John"} type={'text'}/>
+                <FieldText title={"Last name"} name={"lastname"} id={"lastname"} placeholder={"Doe"} type={'text'}/>
+                <FieldText title={"Username"} name={"username"} id={"username"} placeholder={"JohnDoe"} type={'text'}/>
             </Form.Row>
 
             <Form.Row>
                 <NationalitySelect handleChange={this.handleChange}/>
-                <FieldText title={"Phone number"} name={"phone"} id={"phone"} placeholder={"3630"} type={'number'} handleChange={this.handleChange}/>
+                <FieldText title={"Phone number"} name={"phone"} id={"phone"} placeholder={"3630"} type={'number'}/>
             </Form.Row>
 
 
@@ -83,7 +83,9 @@ export default class Users extends Component {
                 <GenderRadioButton />
             </Form.Row>
 
-            <FooterForm showT={this.props.showT} toastMessage={this.state.toastMessage} toastType={this.state.toastType}/>
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
         </Form>;
     }
 }

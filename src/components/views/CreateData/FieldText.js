@@ -12,7 +12,7 @@ export default class FieldText extends Component {
                         name={this.props.name}
                         type={this.props.type}
                         placeholder={this.props.placeholder}
-                        onChange={this.handleChange}/>
+                        onChange={this.props.handleChange}/>
                 </Form.Group>
     }
 }

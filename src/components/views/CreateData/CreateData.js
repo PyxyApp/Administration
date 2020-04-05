@@ -3,7 +3,10 @@ import {Card} from "react-bootstrap";
 import {firebaseConfig} from "../../../firebaseConfig";
 import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
-import Users from "../../views/CreateData/Users";
+import Users from "./Users";
+import Lists from "./Lists";
+import Tasks from "./Tasks";
+import Categories from "./Categories";
 
 //TODO export all function of all page to one function
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
@@ -19,20 +22,27 @@ export default class CreateData extends Component {
         this.state = {
             tokenACP: "",
             dataType: this.props.location.pathname.substr(8),
+            showToast: false,
         };
     }
 
+    showToasts = () => {this.setState({showToast: true})};
+    closeToast = () => {this.setState({showToast: false})};
+    delayToHide = () => {setTimeout(this.closeToast, 10000)};
+
     render() {
         const listData = {
-            users: <Users dataType={this.state.dataType} />,
+            users: <Users dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
+            tasks: <Tasks dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
+            lists: <Lists dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
+            categories: <Categories dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
         };
 
-        console.log(this.state);
         return (
             <div className="content col-10 mt-3">
                 <Card>
                     <Card.Header>
-                        CreateData : DATA
+                        CreateData : {this.state.dataType}
                     </Card.Header>
                     <Card.Body className="d-flex justify-content-center">
                         {listData[this.state.dataType]}

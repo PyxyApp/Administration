@@ -37,14 +37,12 @@ export default class Toasts extends React.Component {
         }
     };
 
-    closeToast = () => {this.setState({showToast: false})};
-
     render(){
+        console.log(this.state);
         return (
             <Toast show={this.props.showT} className={this.props.type}>
                 <Toast.Header>
                     {this.returnTitle(this.props.type)}
-                    {/*<small>{this.state.startTime - this.state.curTime}s ago</small>*/}
                 </Toast.Header>
                 <Toast.Body>
                     {this.props.message}

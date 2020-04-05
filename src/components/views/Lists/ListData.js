@@ -92,10 +92,7 @@ export default class ListData extends Component {
                         </div>
                     </Card.Header>
                     <Card.Body className="d-flex justify-content-center flex-column">
-                        {this.state.data.length !== 0 ? listData[this.state.dataType] :
-                            (
-                            <Loading/>
-                            )}
+                        {this.state.data.length !== 0 ? listData[this.state.dataType] : ( <Loading/> )}
                         <Pagination
                             totalItemsCount={this.state.data.length}
                             activePage={this.state.activePage}
