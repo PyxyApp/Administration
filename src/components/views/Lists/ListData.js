@@ -28,7 +28,7 @@ export default class ListData extends Component {
             page: this.props.location.pathname.substr(1),
             tokenACP: "",
             isLoading: false,
-            dataType: this.props.location.pathname.substr(1),
+            dataType: this.props.location.pathname.substr(6),
             data: [],
             dataId: '',
             activePage: '1',
@@ -70,6 +70,7 @@ export default class ListData extends Component {
     }
 
     render() {
+        console.log(this.state);
         const listData = {
             users: <Users data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
             tasks: <Tasks data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
@@ -83,7 +84,7 @@ export default class ListData extends Component {
                     <Card.Header>
                         {this.state.dataType}
                         <div className={'card-header-right'}>
-                            <Link to={'/create-user'}>
+                            <Link to={'/create/'+this.state.dataType}>
                                 <Button size={"sm"} variant={"success"}>
                                     <FontAwesomeIcon icon={faUserPlus}/> Create {this.state.dataType}
                                 </Button>

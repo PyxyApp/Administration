@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import CreateData from "../views/CreateUser";
+import CreateData from "../views/CreateData/CreateData";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
