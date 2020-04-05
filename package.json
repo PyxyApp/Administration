@@ -48,6 +48,7 @@
     "eject": "react-scripts eject",
     "dev": "NODE_ENV=development",
     "prod": "NODE_ENV=prod",
+    "deploy": "npm run prod && npm run build && cp ./build/index.html ./build/200.html",
     "deploy-dev": "dev npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
   },
   "eslintConfig": {
