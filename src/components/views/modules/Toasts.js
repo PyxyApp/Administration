@@ -38,7 +38,6 @@ export default class Toasts extends React.Component {
     };
 
     render(){
-        console.log(this.state);
         return (
             <Toast show={this.props.showT} className={this.props.type}>
                 <Toast.Header>

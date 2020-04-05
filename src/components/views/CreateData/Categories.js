@@ -48,11 +48,12 @@ export default class Categories extends Component {
             })
             .catch(e => {
                 this.setState({
-                    toastMessage: 'An error occurred while creating the user: ' + e.message,
+                    toastMessage: 'An error occurred while creating the category: ' + e.message,
                     toastType: 'error'
                 });
             });
         this.props.showToasts();
+        this.props.delayToHide();
     };
 
     handleChange = (e) => {
@@ -63,6 +64,7 @@ export default class Categories extends Component {
     };
 
     render() {
+        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
                 <FieldText title={"Title"} name={"title"} id={"title"} placeholder={"Travel"} type={'text'} handleChange={this.handleChange}/>

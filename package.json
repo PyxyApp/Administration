@@ -43,10 +43,10 @@
   "main": "src/electron-starter.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run-script build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "electron ."
+    "deploy-beta": "npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

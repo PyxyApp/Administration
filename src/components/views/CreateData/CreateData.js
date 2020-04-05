@@ -32,10 +32,10 @@ export default class CreateData extends Component {
 
     render() {
         const listData = {
-            users: <Users dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
-            tasks: <Tasks dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
-            lists: <Lists dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
-            categories: <Categories dataType={this.state.dataType} showToasts={this.showToasts} closeToast={this.closeToast} showT={this.state.showToast}/>,
+            users: <Users dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            tasks: <Tasks dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            lists: <Lists dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            categories: <Categories dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
         };
 
         return (

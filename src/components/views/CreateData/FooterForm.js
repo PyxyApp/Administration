@@ -4,7 +4,6 @@ import Toasts from "../modules/Toasts";
 
 export default class FooterForm extends Component {
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Button variant="primary" type="submit">
