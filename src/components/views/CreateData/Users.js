@@ -1,7 +1,9 @@
 import React, {Component} from "react";
-import {Button, Col, Form, InputGroup, Row} from "react-bootstrap";
-import NationalitySelect from "./NationalitySelect";
+import {Button, Form} from "react-bootstrap";
 import {routeAPI} from "../../../index";
+import FieldText from "./FieldText";
+import NationalitySelect from "./NationalitySelect";
+import GenderRadioButton from "./GenderRadioButton";
 
 export default class Users extends Component {
 
@@ -58,104 +60,28 @@ export default class Users extends Component {
     };
 
     render() {
+        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <Form.Group as={Col} controlId="Email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                        name="email"
-                        type="email"
-                        placeholder="Enter email"
-                        onChange={this.handleChange}/>
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        onChange={this.handleChange}/>
-                </Form.Group>
+                <FieldText title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'}/>
+                <FieldText title={"Password"} name={"password"} id={"password"} placeholder={"*******"} type={'password'}/>
             </Form.Row>
 
             <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="firstname"
-                        onChange={this.handleChange}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik02">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name="lastname"
-                        onChange={this.handleChange}
-                    />
-
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormikUsername">
-                    <Form.Label>Username</Form.Label>
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <Form.Control
-                            type="text"
-                            placeholder="Username"
-                            aria-describedby="inputGroupPrepend"
-                            name="username"
-                            onChange={this.handleChange}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            {"errors.username"}
-                        </Form.Control.Feedback>
-                    </InputGroup>
-                </Form.Group>
+                <FieldText title={"First name"} name={"firstname"} id={"firstname"} placeholder={"John"} type={'text'}/>
+                <FieldText title={"Last name"} name={"lastname"} id={"lastname"} placeholder={"Doe"} type={'text'}/>
+                <FieldText title={"Username"} name={"username"} id={"username"} placeholder={"JohnDoe"} type={'text'}/>
             </Form.Row>
 
             <Form.Row>
-                <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>Nationality</Form.Label>
-                    <NationalitySelect handleChange={this.handleChange}/>
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="Phone">
-                    <Form.Label>PhoneNumber</Form.Label>
-                    <Form.Control
-                        name="phone"
-                        type="phoneNumber"
-                        placeholder="Enter phone number"
-                        onChange={this.handleChange}/>
-                </Form.Group>
+                <NationalitySelect handleChange={this.handleChange}/>
+                <FieldText title={"Phone number"} name={"phone"} id={"phone"} placeholder={"3630"} type={'number'}/>
             </Form.Row>
 
-            <Form.Group as={Row}>
-                <Form.Label as="legend" column sm={2}>
-                    Gender
-                </Form.Label>
-                <Col sm={10} onChange={this.handleChange}>
-                    <Form.Check
-                        type="radio"
-                        label="Male"
-                        value="m"
-                        name="gender"
-                        id="genderMale"
-                    />
-                    <Form.Check
-                        type="radio"
-                        label="Female"
-                        value="f"
-                        name="gender"
-                        id="genderFemale"
-                    />
-                </Col>
-            </Form.Group>
+
+            <Form.Row>
+                <GenderRadioButton />
+            </Form.Row>
 
             <Button variant="primary" type="submit">
                 Submit
