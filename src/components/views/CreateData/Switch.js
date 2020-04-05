@@ -17,7 +17,7 @@ export default class Switch extends Component {
                 <Form.Label sm={2}>
                     {this.props.label}
                 </Form.Label>
-                <Col onChange={this.handleChange}>
+                <Col onChange={this.props.handleChange}>
                     <Form.Check
                         type="radio"
                         label="True"

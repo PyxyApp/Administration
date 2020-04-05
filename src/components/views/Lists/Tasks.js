@@ -59,7 +59,7 @@ class Tasks extends Component {
                     {this.state.data.slice(this.props.startRange, this.props.endRange).map( (task, index) => {
                             return <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{task.uid}</td>
+                                <td>{task.id}</td>
                                 <td>{task.name}</td>
                                 <td>
                                     {!this.state.apiLoaded ?
@@ -68,7 +68,7 @@ class Tasks extends Component {
                                         )
                                         :
                                         this.state.lists.map((list, index) => {
-                                            if (list.uid === task.list) return (
+                                            if (list.id === task.list) return (
                                                 <span key={index}>
                                                     {list.title}
                                                     </span>

@@ -47,7 +47,7 @@ export default class Lists extends Component {
             })
             .catch(e => {
                 this.setState({
-                    toastMessage: 'An error occurred while creating the list: ' + e.message,
+                    toastMessage: 'An error occurred while creating the list: ' + e.message + ": " + e.code,
                     toastType: 'error'
                 });
             });

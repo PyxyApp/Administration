@@ -1,6 +1,6 @@
 {
   "name": "acp_pyxy",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
@@ -46,7 +46,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-beta": "npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
+    "deploy-dev": "npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -57,7 +57,7 @@ class Lists extends Component {
                     {this.state.data.slice(this.state.startRange, this.state.endRange).map( (lists, index) => {
                             return <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{lists.uid}</td>
+                                <td>{lists.id}</td>
                                 <td>{lists.title}</td>
                                 <td>
                                     {!this.state.apiLoaded ?

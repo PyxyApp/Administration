@@ -39,7 +39,7 @@ export default class Categories extends Component {
                 {this.state.data.slice(this.props.startRange, this.props.endRange).map( (categories, index) => {
                         return <tr key={index}>
                                     <td>{index+1}</td>
-                                    <td>{categories.uid}</td>
+                                    <td>{categories.id}</td>
                                     <td>{categories.title}</td>
                                     <td>{categories.description}</td>
                                     <td>
