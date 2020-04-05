@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Gravatar from 'react-gravatar';
 import Loading from "../modules/Loading";
 import ButtonGroupAction from "./ButtonGroupAction";
-import {routeAPI} from "../../../index";
+import routeAPI from "../../../tools/routeAPI";
 
 let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
 

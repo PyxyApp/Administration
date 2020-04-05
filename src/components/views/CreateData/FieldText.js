@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Col, Form} from "react-bootstrap";
-import {country} from '../../../tools/Nationalities';
 
 export default class FieldText extends Component {
 

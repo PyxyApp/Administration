@@ -46,7 +46,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-dev": "npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
+    "dev": "NODE_ENV=development",
+    "prod": "NODE_ENV=prod",
+    "deploy-dev": "dev npm run build && cp ./build/index.html ./build/200.html && surge ./build https://pyxy.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {Button, Form} from "react-bootstrap";
-import {routeAPI} from "../../../index";
+import {Form} from "react-bootstrap";
+import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
 import NationalitySelect from "./NationalitySelect";
 import GenderRadioButton from "./GenderRadioButton";
@@ -60,7 +60,6 @@ export default class Users extends Component {
     };
 
     render() {
-        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
                 <FieldText title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'} handleChange={this.handleChange}/>

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Form} from "react-bootstrap";
-import {routeAPI} from "../../../index";
+import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
 import FooterForm from "./FooterForm";
 import Switch from "./Switch";
@@ -60,11 +60,9 @@ export default class Lists extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log(this.state);
     };
 
     render() {
-        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
                 <FieldText title={"Title"} name={"title"} id={"title"} placeholder={"My first list"} type={'text'} handleChange={this.handleChange}/>

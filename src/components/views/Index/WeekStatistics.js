@@ -5,7 +5,7 @@ import ComparisonTasksWeek from './ComparisonTasksWeek';
 import {firebaseConfig} from "../../../firebaseConfig";
 import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
-import {routeAPI} from "../../../index";
+import routeAPI from "../../../tools/routeAPI";
 import Loading from "../modules/Loading";
 import GenderStatistics from "./GenderStatistics";
 
@@ -93,7 +93,6 @@ class WeekStatistics extends Component {
             this.state.weekStats[i].tasksDone = tasksDoneByDay.length;
         }
 
-        console.log(this.state);
         const resultGender = this.state.users.filter(user => user.gender === 'm');
         this.setState({
             nbUsers: this.state.users.length,

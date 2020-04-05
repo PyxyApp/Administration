@@ -1,7 +1,7 @@
 import * as firebase from "firebase";
 import {history} from '../store/defaultStore';
 import C from "../../tools/Constants";
-import {routeAPI} from "../../index";
+import routeAPI from "../../tools/routeAPI";
 
 export const onLogin = (login, password, token) => dispatch => {
     dispatch({type: C.FETCH_LOGIN});

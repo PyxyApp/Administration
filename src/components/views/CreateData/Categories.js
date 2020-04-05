@@ -1,12 +1,8 @@
 import React, {Component} from "react";
-import {Button, Form} from "react-bootstrap";
-import {routeAPI} from "../../../index";
+import {Form} from "react-bootstrap";
+import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
-import NationalitySelect from "./NationalitySelect";
-import GenderRadioButton from "./GenderRadioButton";
-import Toasts from "../modules/Toasts";
 import FooterForm from "./FooterForm";
-import Users from "./Users";
 
 export default class Categories extends Component {
 
@@ -64,7 +60,6 @@ export default class Categories extends Component {
     };
 
     render() {
-        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
                 <FieldText title={"Title"} name={"title"} id={"title"} placeholder={"Travel"} type={'text'} handleChange={this.handleChange}/>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button, ButtonGroup, Modal} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faUserEdit} from "@fortawesome/free-solid-svg-icons";
-import {routeAPI} from "../../../index";
+import routeAPI from "../../../tools/routeAPI";
 import Toasts from "../modules/Toasts";
 import {firebaseConfig} from "../../../firebaseConfig";
 import key from "../../../privateKey";

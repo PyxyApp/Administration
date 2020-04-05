@@ -17,7 +17,6 @@ class Index extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 <Table striped bordered hover variant="dark" >

@@ -6,7 +6,7 @@ import key from "../../../privateKey";
 import * as jwt from "jsonwebtoken";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {routeAPI} from "../../../index";
+import routeAPI from "../../../tools/routeAPI";
 import Users from "../../containers/Users";
 import Tasks from "../../containers/Tasks";
 import Pagination from "react-pagination-bootstrap";
@@ -70,7 +70,6 @@ export default class ListData extends Component {
     }
 
     render() {
-        console.log(this.state);
         const listData = {
             users: <Users data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
             tasks: <Tasks data={this.state.data} startRange={this.state.startRange} endRange={this.state.endRange}/>,
