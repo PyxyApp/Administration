@@ -1,18 +1,17 @@
 import {connect} from "react-redux";
-import Header from "../views/Header/Header";
+import ListData from "../views/Lists/ListData";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {
-        pushRoute
-    };
+    pushRoute
+};
 
 const mapStateToProps = state =>
     ({
         fetchLogin: state.fetchLogin,
         statusLogin: state.statusLogin,
-        userSession: state.userSession,
+        userSession: state.userSession
     });
 
-
-const Container = connect(mapStateToProps, mapDispatchToProps)(Header);
+const Container = connect(mapStateToProps, mapDispatchToProps)(ListData);
 export default Container;

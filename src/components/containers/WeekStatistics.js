@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import WeekStatistics from "../views/WeekStatistics";
+import WeekStatistics from "../views/Index/WeekStatistics";
 import {pushRoute} from "../../redux/actions/PushRoute.action";
 
 const mapDispatchToProps = {

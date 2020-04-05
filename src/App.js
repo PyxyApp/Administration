@@ -2,25 +2,27 @@ import React from 'react';
 import { Route } from 'react-router'
 import { ConnectedRouter } from 'connected-react-router';
 import Index from './components/containers/Index';
-import Categories from './components/containers/Categories';
-import Lists from './components/containers/Lists';
-import Tasks from './components/containers/Tasks';
+import ListData from './components/containers/ListData';
 import Login from './components/containers/Login';
 import Header from './components/containers/Header';
 import Menu from './components/containers/Menu';
 import ProfileSettings from './components/containers/ProfileSettings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Users from "./components/containers/Users";
+import CreateData from "./components/containers/CreateData";
 
 const App = ({history}) => {
         return (
             <ConnectedRouter history={history}>
                 <Route path="/" component={Header}/>
                 <Route exact path="/" component={Index}/>
-                <Route exact path="/users" component={Users}/>
-                <Route exact path="/categories" component={Categories}/>
-                <Route exact path="/lists" component={Lists}/>
-                <Route exact path="/tasks" component={Tasks}/>
+                <Route exact path="/list/users" component={ListData}/>
+                <Route exact path="/list/categories" component={ListData}/>
+                <Route exact path="/list/tasks" component={ListData}/>
+                <Route exact path="/list/lists" component={ListData}/>
+                <Route exact path="/create/users" component={CreateData}/>
+                <Route exact path="/create/categories" component={CreateData}/>
+                <Route exact path="/create/tasks" component={CreateData}/>
+                <Route exact path="/create/lists" component={CreateData}/>
                 <Route exact path="/profile/settings" component={ProfileSettings}/>
                 <Route exact path="/login" component={Login}/>
                 <Route path="/" component={Menu}/>

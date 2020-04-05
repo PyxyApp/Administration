@@ -20,8 +20,12 @@
   }
   .list-group{
     a{
+      text-decoration: none;
       &.active{
         .list-group-item{
+          svg{
+            color: $primary-color
+          }
           color: white;
           background-color: $background-color-sidebar-active !important;
         }
@@ -40,9 +44,9 @@
       color: white
     }
     &:hover{
-      background-color: $background-color-sidebar-active;
+      background-color: $primary-color;
       color: white;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 }
