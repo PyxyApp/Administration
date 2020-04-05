@@ -32,6 +32,8 @@ export default class Header extends Component {
                     </Link>
                 </Navbar>
             )
+        }else{
+            return ("")
         }
     }
 }

@@ -79,7 +79,7 @@ export default class Users extends Component {
 
 
             <Form.Row>
-                <GenderRadioButton />
+                <GenderRadioButton handleChange={this.handleChange}/>
             </Form.Row>
 
             <FooterForm showT={this.props.showT} toastMessage={this.state.toastMessage} toastType={this.state.toastType}/>

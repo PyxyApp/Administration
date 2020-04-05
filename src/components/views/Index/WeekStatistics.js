@@ -86,6 +86,7 @@ class WeekStatistics extends Component {
             const newTasksByDay = this.filterData("tasks", "date_created", i, week);
             const newListsByDay = this.filterData("lists", "date_created", i, week);
 
+            console.log(newUsersByDay.length);
             this.state.weekStats[i].activeUsers = activeUsersByDay.length;
             this.state.weekStats[i].newUsers = newUsersByDay.length;
             this.state.weekStats[i].newTasks = newTasksByDay.length;
@@ -103,21 +104,19 @@ class WeekStatistics extends Component {
 
     render(){
         if(this.state.apiLoaded){
-            if(!this.state.isLoaded){ this.getStats() }
+            if(!this.state.isLoaded){ this.getStats()}
         }
         return(
             <Card className={"mt-3"}>
                 <Card.Header>Trafic this week</Card.Header>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">Current week</Card.Subtitle>
-                        {this.state.weekStats[0].activeUsers ? (
-                            <div className="d-flex flex-row justify-content-between">
-                                <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'List created'} type={'newLists'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'Task created'} type={'newTasks'} stats={this.state.weekStats}/>
-                            </div>
-                        ) : (<Loading />)}
+                        <div className="d-flex flex-row justify-content-between">
+                            <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'List created'} type={'newLists'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'Task created'} type={'newTasks'} stats={this.state.weekStats}/>
+                        </div>
                     <hr/>
                     <div className="d-flex flex-row">
                         <div className="d-flex flex-column w-50">

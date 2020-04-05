@@ -11,7 +11,7 @@ export default class NationalitySelect extends Component {
                 <Form.Label sm={2}>
                     Gender
                 </Form.Label>
-                <Col sm={10} onChange={this.handleChange}>
+                <Col sm={10} onChange={this.props.handleChange}>
                     <Form.Check
                         type="radio"
                         label="Male"
