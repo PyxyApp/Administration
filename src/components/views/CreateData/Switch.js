@@ -10,7 +10,7 @@ export default class Switch extends Component {
     }
 
     render () {
-
+    // Bug and always returns "true"
         return (
             <Form.Group as={Col}>
                 {/* Le checkbox bug */}
@@ -21,14 +21,14 @@ export default class Switch extends Component {
                     <Form.Check
                         type="radio"
                         label="True"
-                        value="true"
+                        value={true}
                         name={this.props.name}
                         id={this.props.id + "true"}
                     />
                     <Form.Check
                         type="radio"
                         label="False"
-                        value="false"
+                        value={false}
                         name={this.props.name}
                         id={this.props.id + "false"}
                     />

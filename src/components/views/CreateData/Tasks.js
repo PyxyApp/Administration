@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
-import NationalitySelect from "./NationalitySelect";
 import GenderRadioButton from "./GenderRadioButton";
+import FooterForm from "./FooterForm";
+import Switch from "./Switch";
 
 export default class Tasks extends Component {
 
@@ -17,7 +18,7 @@ export default class Tasks extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'users/', {
+        fetch(routeAPI + 'tasks/', {
             method: "POST",
             headers: {
                 'Authorization': this.state.tokenACP,
@@ -25,31 +26,28 @@ export default class Tasks extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password,
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
-                username: this.state.username,
-                nat: this.state.nat,
-                gender: this.state.gender,
+                name: this.state.name,
+                description: this.state.description,
+                list: this.state.list,
+                is_private: false,
+                is_active: true,
             })
         })
             .then(r => {
                 console.log(r);
                 this.setState({
-                    toastMessage: 'User created with success !',
+                    toastMessage: 'Tasks created with success !',
                     toastType: 'success'
                 })
             })
             .catch(e => {
                 this.setState({
-                    toastMessage: 'An error occurred while creating the user: ' + e.message,
+                    toastMessage: 'An error occurred while creating the task: ' + e.message,
                     toastType: 'error'
                 });
             });
-        this.handleClose();
-        this.showToasts();
-        this.delayToHide();
+        this.props.showToasts();
+        this.props.delayToHide();
     };
 
     handleChange = (e) => {
@@ -60,31 +58,23 @@ export default class Tasks extends Component {
     };
 
     render() {
+        console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'}/>
-                <FieldText title={"Password"} name={"password"} id={"password"} placeholder={"*******"} type={'password'}/>
+                <FieldText title={"Name"} name={"name"} id={"name"} placeholder={"Visit the Taj Mahal"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText title={"list"} name={"list"} id={"list"} placeholder={"listId"} type={'text'} handleChange={this.handleChange}/>
             </Form.Row>
 
-            <Form.Row>
-                <FieldText title={"First name"} name={"firstname"} id={"firstname"} placeholder={"John"} type={'text'}/>
-                <FieldText title={"Last name"} name={"lastname"} id={"lastname"} placeholder={"Doe"} type={'text'}/>
-                <FieldText title={"Username"} name={"username"} id={"username"} placeholder={"JohnDoe"} type={'text'}/>
-            </Form.Row>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Description</Form.Label>
+                <Form.Control name="description" as="textarea" rows="3" onChange={this.handleChange}/>
+            </Form.Group>
 
-            <Form.Row>
-                <NationalitySelect handleChange={this.handleChange}/>
-                <FieldText title={"Phone number"} name={"phone"} id={"phone"} placeholder={"3630"} type={'number'}/>
-            </Form.Row>
+            {/*<Form.Row>*/}
+            {/*    <Switch label={"Is Active ?"} id={"isActive"} name={"is_active"} handleChange={this.handleChange}/>*/}
+            {/*</Form.Row>S*/}
 
-
-            <Form.Row>
-                <GenderRadioButton />
-            </Form.Row>
-
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
+            <FooterForm showT={this.props.showT} toastMessage={this.state.toastMessage} toastType={this.state.toastType}/>
         </Form>;
     }
 }

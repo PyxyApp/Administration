@@ -28,8 +28,9 @@ export default class Lists extends Component {
                 title: this.state.title,
                 user: this.state.userId,
                 category: this.state.categoryId,
-                is_private: this.state.is_private,
-                is_active: this.state.is_active,
+                description: this.state.description,
+                is_private: false,
+                is_active: true,
             })
         })
             .then(r => {
@@ -70,10 +71,15 @@ export default class Lists extends Component {
                 <FieldText title={"Category"} name={"categoryId"} id={"categoryId"} placeholder={"category"} type={'text'} handleChange={this.handleChange}/>
             </Form.Row>
 
-            <Form.Row>
-                <Switch label={"Is Active ?"} id={"isActive"} name={"is_active"} handleChange={this.handleChange}/>
-                <Switch label={"Is Private ?"} id={"isPrivate"} name={"is_private"} handleChange={this.handleChange}/>
-            </Form.Row>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Description</Form.Label>
+                <Form.Control name="description" as="textarea" rows="3" onChange={this.handleChange}/>
+            </Form.Group>
+
+            {/*<Form.Row>*/}
+            {/*    <Switch label={"Is Active ?"} id={"isActive"} name={"is_active"} handleChange={this.handleChange}/>*/}
+            {/*    <Switch label={"Is Private ?"} id={"isPrivate"} name={"is_private"} handleChange={this.handleChange}/>*/}
+            {/*</Form.Row>*/}
 
             <FooterForm showT={this.props.showT} toastMessage={this.state.toastMessage} toastType={this.state.toastType}/>
         </Form>;
