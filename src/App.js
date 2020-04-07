@@ -19,11 +19,9 @@ const App = ({history}) => {
                 <Route exact path="/list/categories" component={ListData}/>
                 <Route exact path="/list/tasks" component={ListData}/>
                 <Route exact path="/list/lists" component={ListData}/>
-                <Route exact path="/data/:do/users" component={FormData}/>
-                <Route exact path="/data/:do/categories" component={FormData}/>
-                <Route exact path="/data/:do/tasks" component={FormData}/>
-                <Route exact path="/data/:do/lists" component={FormData}/>
-                <Route exact path="/profile/settings" component={ProfileSettings}/>
+                <Route exact path="/data/:do/:data/" component={FormData}/>
+                <Route exact path="/data/:do/:data/:id" component={FormData}/>
+                <Route exact path="/profile/settings/" component={ProfileSettings}/>
                 <Route exact path="/login" component={Login}/>
                 <Route path="/" component={Menu}/>
             </ConnectedRouter>

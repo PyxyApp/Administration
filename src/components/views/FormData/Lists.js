@@ -3,22 +3,53 @@ import {Form} from "react-bootstrap";
 import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
 import FooterForm from "./FooterForm";
-import Switch from "./Switch";
+import Loading from "../modules/Loading";
 
 export default class Lists extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            tokenACP: "",
-            dataType: this.props.dataType,
-        };
+            this.state = {
+                tokenACP: "",
+                dataType: this.props.dataType,
+                create: "POST",
+                edit: "PUT",
+                data: {"title": "", "description": "", "category": "", "user": ""}
+            };
+    }
+
+    async componentDidMount() {
+        if(this.props.action === 'edit'){
+            await fetch(routeAPI + this.state.dataType + "/" + this.props.id, {
+                headers: { 'Authorization': this.state.tokenACP },
+            }).then(response => response.json())
+                .then(json => {
+                    if(json){
+                        this.setState({
+                            data: json,
+                            apiLoaded: true,
+                            categoryId: json.category,
+                            userId: json.user,
+                            title: json.title,
+                            description: json.description
+                        });
+                    }
+                }).catch(e => {
+                    console.log(e.code)
+                    console.log(e.message)
+                })
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'lists/', {
-            method: "POST",
+        let id = this.props.id
+        let route = routeAPI + 'lists/';
+        if(id){
+            route = routeAPI + 'lists/' + id
+        }
+        fetch( route, {
+            method: this.state[this.props.action],
             headers: {
                 'Authorization': this.state.tokenACP,
                 'Accept': 'application/json',
@@ -66,14 +97,14 @@ export default class Lists extends Component {
     render() {
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText title={"Title"} name={"title"} id={"title"} placeholder={"My first list"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"User"} name={"userId"} id={"userId"} placeholder={"user"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"Category"} name={"categoryId"} id={"categoryId"} placeholder={"category"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.title} title={"Title"} name={"title"} id={"title"} placeholder={"My first list"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.user} title={"User"} name={"userId"} id={"userId"} placeholder={"user"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.category} title={"Category"} name={"categoryId"} id={"categoryId"} placeholder={"category"} type={'text'} handleChange={this.handleChange}/>
             </Form.Row>
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Description</Form.Label>
-                <Form.Control name="description" as="textarea" rows="3" onChange={this.handleChange}/>
+                <Form.Control defaultValue={this.state.data.description} name="description" as="textarea" rows="3" onChange={this.handleChange}/>
             </Form.Group>
 
             {/*<Form.Row>*/}

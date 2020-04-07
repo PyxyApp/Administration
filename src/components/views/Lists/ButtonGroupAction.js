@@ -80,7 +80,7 @@ export default class ButtonGroupAction extends Component {
         return(
             <div>
                 <ButtonGroup aria-label="Basic example">
-                    <Link to={"/data/edit/" + this.props.type}><Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button></Link>
+                    <Link to={"/data/edit/" + this.props.type + "/" +this.props.id}><Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button></Link>
                     <Button variant={"danger"}
                             onClick={() => this.setState({isShown: true, data: "users"}
                             )}><FontAwesomeIcon icon={faTimes}/></Button>

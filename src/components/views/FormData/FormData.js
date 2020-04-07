@@ -11,11 +11,11 @@ export default class FormData extends Component {
 
     constructor(props) {
         super(props);
-        let doLength = this.props.match.params.do.length;
         this.state = {
             tokenACP: token,
             action: this.props.match.params.do,
-            dataType: this.props.location.pathname.substr(doLength+7),
+            dataType: this.props.match.params.data,
+            id: this.props.match.params.id,
             showToast: false,
         };
     }
@@ -26,10 +26,10 @@ export default class FormData extends Component {
 
     render() {
         const listData = {
-            users: <Users dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
-            tasks: <Tasks dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
-            lists: <Lists dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
-            categories: <Categories dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            users: <Users id={this.state.id} action={this.state.action} dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            tasks: <Tasks id={this.state.id} action={this.state.action} dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            lists: <Lists id={this.state.id} action={this.state.action} dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
+            categories: <Categories id={this.state.id} action={this.state.action} dataType={this.state.dataType} showToasts={this.showToasts} delayToHide={this.delayToHide} showT={this.state.showToast}/>,
         };
 
         return (
