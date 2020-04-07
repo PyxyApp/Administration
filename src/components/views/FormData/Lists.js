@@ -17,7 +17,7 @@ export default class Lists extends Component {
                 edit: "PUT",
                 data: {"title": "", "description": "", "category": "", "user": "", "is_active": true, "is_private": false},
                 is_active: true,
-                is_false: false
+                is_private: false
             };
     }
 
@@ -106,8 +106,6 @@ export default class Lists extends Component {
     };
 
     render() {
-        console.log(this.state.data.is_active);
-        console.log(this.state.data.is_private);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
                 <FieldText defaultValue={this.state.data.title} title={"Title"} name={"title"} id={"title"} placeholder={"My first list"} type={'text'} handleChange={this.handleChange}/>
