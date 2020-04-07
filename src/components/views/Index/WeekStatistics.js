@@ -75,11 +75,11 @@ class WeekStatistics extends Component {
 
             const activeUsersByDay = this.filterData("users", "last_login", i, week);
             const newUsersByDay = this.filterData("users", "date_created", i, week);
-            const tasksDoneByDay = this.filterData("tasks", "date_done", i, week);
+            const tasksDoneByDay = this.state['tasks'].filter(data => (data.date_done ? (data.date_done._seconds <= week[i].end) : 0))
+                .filter(data => (data.date_done._seconds >= week[i].start));
             const newTasksByDay = this.filterData("tasks", "date_created", i, week);
             const newListsByDay = this.filterData("lists", "date_created", i, week);
 
-            console.log(newUsersByDay.length);
             this.state.weekStats[i].activeUsers = activeUsersByDay.length;
             this.state.weekStats[i].newUsers = newUsersByDay.length;
             this.state.weekStats[i].newTasks = newTasksByDay.length;

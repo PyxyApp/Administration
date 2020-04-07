@@ -18,7 +18,8 @@ export default class Tasks extends Component {
             edit: "PUT",
             data: {"name": "", "description": "", "list": "", "is_done": false, "is_private": false},
             is_done: false,
-            is_private: false
+            is_private: false,
+            date_done: null
         };
     }
 
@@ -36,7 +37,7 @@ export default class Tasks extends Component {
                             name: json.name,
                             description: json.description,
                             is_done: json.is_done,
-                            is_private: json.is_private
+                            is_private: json.is_private,
                         });
                     }
                 }).catch(e => {
@@ -66,6 +67,7 @@ export default class Tasks extends Component {
                 list: this.state.list,
                 is_done: this.state.is_done,
                 is_private: this.state.is_private,
+                date_done: this.state.data.date_done
             })
         })
             .then(r => {
