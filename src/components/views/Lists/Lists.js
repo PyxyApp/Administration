@@ -95,7 +95,7 @@ class Lists extends Component {
                                     )}
                                 </td>
                                 <td>
-                                    <ButtonGroupAction data={this.props.data} id={lists.uid}/>
+                                    <ButtonGroupAction data={this.props.data} id={lists.id} type="lists"/>
                                 </td>
                             </tr>
                         })}

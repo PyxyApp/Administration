@@ -64,18 +64,16 @@ export default class ButtonGroupAction extends Component {
 
     deleteConfirm = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'users/' + this.state.data.user.uid, {
-            method: "DEL",
+        fetch(routeAPI + this.props.type + "/" + this.props.id, {
+            method: "delete",
             headers: {'Authorization': this.state.tokenACP},
         })
-            .then(response => response.json()
-                .then(json => {
-                    console.log(json)
+            .then(response =>
+                this.setState({
+                    toastMessage: 'Action successfully completed !',
+                    toastType: 'success'
                 })
-            )
-            .catch(e => {
-                console.error(e);
-            });
+            );
         this.handleClose();
         this.showToasts();
         this.delayToHide();

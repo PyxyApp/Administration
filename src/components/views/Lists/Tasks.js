@@ -92,7 +92,7 @@ class Tasks extends Component {
                                     )}
                                 </td>
                                 <td>
-                                    <ButtonGroupAction data={this.props.data} id={task.uid}/>
+                                    <ButtonGroupAction data={this.props.data} id={task.id} type="tasks"/>
                                 </td>
                             </tr>
                         })}

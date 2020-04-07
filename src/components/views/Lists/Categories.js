@@ -43,7 +43,7 @@ export default class Categories extends Component {
                                     <td>{categories.title}</td>
                                     <td>{categories.description}</td>
                                     <td>
-                                        <ButtonGroupAction data={this.props.data} id={categories.uid}/>
+                                        <ButtonGroupAction data={this.props.data} id={categories.id} type="categories"/>
                                     </td>
                                 </tr>
                     })}
