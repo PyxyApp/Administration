@@ -20,7 +20,7 @@ export default class Switch extends Component {
                 <Col>
                     <Form.Check
                         type="switch"
-                        label="is Active"
+                        label={"is "+this.props.name}
                         name={this.props.name}
                         id={this.props.id + "true"}
                         onChange={this.props.handleChange}

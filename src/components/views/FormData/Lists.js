@@ -72,7 +72,7 @@ export default class Lists extends Component {
             .then(r => {
                 if(r.ok){
                     this.setState({
-                        toastMessage: 'List created with success !',
+                        toastMessage: 'The action was successfully completed',
                         toastType: 'success'
                     })
                 }else{
