@@ -7,7 +7,7 @@ export const onLogin = (login, password, token) => dispatch => {
     dispatch({type: C.FETCH_LOGIN});
     firebase.auth().signInWithEmailAndPassword(login, password)
         .then(r =>{
-                fetch(routeAPI+r.user.uid, {
+            fetch(routeAPI+ "users/" +r.user.uid, {
                     headers: {'Authorization': token},
                 })
                     .then(response => response.json()).then(json => {
@@ -19,7 +19,9 @@ export const onLogin = (login, password, token) => dispatch => {
                                 dispatch({type: C.FAIL_LOGIN});
                             }
                         }
-                    })
+                    }).catch(e => {
+                        dispatch({type: C.FAIL_LOGIN});
+                })
             }
         ).catch(e => { dispatch({ type: C.FAIL_LOGIN, payload: e.message })})
 };

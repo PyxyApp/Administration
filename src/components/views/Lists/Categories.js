@@ -1,15 +1,8 @@
 import React, {Component} from 'react';
 import {Table} from "react-bootstrap";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import ButtonGroupAction from "./ButtonGroupAction";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class Categories extends Component {
 
@@ -17,7 +10,7 @@ export default class Categories extends Component {
         super(props);
         this.state = {
             page: "categories",
-            tokenACP: "",
+            tokenACP: token,
             isLoading: false,
             data: this.props.data,
             activePage: '1'
@@ -43,7 +36,7 @@ export default class Categories extends Component {
                                     <td>{categories.title}</td>
                                     <td>{categories.description}</td>
                                     <td>
-                                        <ButtonGroupAction data={this.props.data} id={categories.uid}/>
+                                        <ButtonGroupAction data={this.props.data} id={categories.id} type="categories"/>
                                     </td>
                                 </tr>
                     })}

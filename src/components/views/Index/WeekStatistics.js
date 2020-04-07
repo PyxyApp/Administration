@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import {Card} from "react-bootstrap";
 import SmallGraph from "./SmallGraph";
 import ComparisonTasksWeek from './ComparisonTasksWeek';
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import routeAPI from "../../../tools/routeAPI";
 import Loading from "../modules/Loading";
 import GenderStatistics from "./GenderStatistics";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 class WeekStatistics extends Component {
 
@@ -22,7 +15,7 @@ class WeekStatistics extends Component {
         this.state = {
             isLoaded: false,
             apiLoaded: false,
-            tokenACP: "",
+            tokenACP: token,
             nbUsers: "",
             nbMale: "",
             weekStats: [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}, {"name": "Saturday"}, {"name": "Sunday"}],
@@ -82,7 +75,8 @@ class WeekStatistics extends Component {
 
             const activeUsersByDay = this.filterData("users", "last_login", i, week);
             const newUsersByDay = this.filterData("users", "date_created", i, week);
-            const tasksDoneByDay = this.filterData("tasks", "date_done", i, week);
+            const tasksDoneByDay = this.state['tasks'].filter(data => (data.date_done ? (data.date_done._seconds <= week[i].end) : 0))
+                .filter(data => (data.date_done._seconds >= week[i].start));
             const newTasksByDay = this.filterData("tasks", "date_created", i, week);
             const newListsByDay = this.filterData("lists", "date_created", i, week);
 
@@ -103,21 +97,21 @@ class WeekStatistics extends Component {
 
     render(){
         if(this.state.apiLoaded){
-            if(!this.state.isLoaded){ this.getStats() }
+            if(!this.state.isLoaded){ this.getStats()}
         }
         return(
             <Card className={"mt-3"}>
                 <Card.Header>Trafic this week</Card.Header>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">Current week</Card.Subtitle>
-                        {this.state.weekStats[0].activeUsers ? (
-                            <div className="d-flex flex-row justify-content-between">
-                                <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'List created'} type={'newLists'} stats={this.state.weekStats}/>
-                                <SmallGraph title={'Task created'} type={'newTasks'} stats={this.state.weekStats}/>
-                            </div>
-                        ) : (<Loading />)}
+                    {this.state.weekStats[0].activeUsers ? (
+                        <div className="d-flex flex-row justify-content-between">
+                            <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'List created'} type={'newLists'} stats={this.state.weekStats}/>
+                            <SmallGraph title={'Task created'} type={'newTasks'} stats={this.state.weekStats}/>
+                        </div>
+                    ): <Loading/>}
                     <hr/>
                     <div className="d-flex flex-row">
                         <div className="d-flex flex-column w-50">

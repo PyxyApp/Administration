@@ -4,21 +4,16 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faUserEdit} from "@fortawesome/free-solid-svg-icons";
 import routeAPI from "../../../tools/routeAPI";
 import Toasts from "../modules/Toasts";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+import {Link} from "react-router-dom";
+const token = getToken();
 
 export default class ButtonGroupAction extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            tokenACP: token,
             isShown: false,
             showToast: false,
             toastMessage: '',
@@ -64,18 +59,16 @@ export default class ButtonGroupAction extends Component {
 
     deleteConfirm = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'users/' + this.state.data.user.uid, {
-            method: "DEL",
+        fetch(routeAPI + this.props.type + "/" + this.props.id, {
+            method: "delete",
             headers: {'Authorization': this.state.tokenACP},
         })
-            .then(response => response.json()
-                .then(json => {
-                    console.log(json)
+            .then(response =>
+                this.setState({
+                    toastMessage: 'Action successfully completed !',
+                    toastType: 'success'
                 })
-            )
-            .catch(e => {
-                console.error(e);
-            });
+            );
         this.handleClose();
         this.showToasts();
         this.delayToHide();
@@ -87,7 +80,7 @@ export default class ButtonGroupAction extends Component {
         return(
             <div>
                 <ButtonGroup aria-label="Basic example">
-                    <Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button>
+                    <Link to={"/data/edit/" + this.props.type + "/" +this.props.id}><Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button></Link>
                     <Button variant={"danger"}
                             onClick={() => this.setState({isShown: true, data: "users"}
                             )}><FontAwesomeIcon icon={faTimes}/></Button>
@@ -101,7 +94,9 @@ export default class ButtonGroupAction extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose}>No</Button>
+                        {this.props.type === 'users' ? (
                         <Button type={"submit"} variant="warning" onClick={this.Deactivate}>Deactivate</Button>
+                        ) : ""}
                         <Button type={"submit"} variant="danger" onClick={this.deleteConfirm}>Yes</Button>
                     </Modal.Footer>
                 </Modal>

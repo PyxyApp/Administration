@@ -15,23 +15,27 @@ export default class Menu extends Component {
     }
 
     render() {
-        if (this.props.location.pathname !== '/login') return (
-            <div className={"sideMenu col-2"}>
-                <ListGroup variant="flush" defaultActiveKey="#link1">
-                    <NavLink exact to={'/'} activeClassName="active">
-                        <ListGroup.Item>
-                            <FontAwesomeIcon icon={faTachometerAlt}/> Dashboard
-                        </ListGroup.Item>
-                    </NavLink>
-                    <h3>Data</h3>
+        if (this.props.location.pathname !== '/login') {
+            return (
+                <div className={"sideMenu col-2"}>
+                    <ListGroup variant="flush" defaultActiveKey="#link1">
+                        <NavLink exact to={'/'} activeClassName="active">
+                            <ListGroup.Item>
+                                <FontAwesomeIcon icon={faTachometerAlt}/> Dashboard
+                            </ListGroup.Item>
+                        </NavLink>
+                        <h3>Data</h3>
                         <ListGroupItem to={'/list/users'} dataType={"Users"} icon={faUser}/>
                         <ListGroupItem to={'/list/categories'} dataType={"Categories"} icon={faFolder}/>
                         <ListGroupItem to={'/list/lists'} dataType={"Lists"} icon={faClipboard}/>
                         <ListGroupItem to={'/list/tasks'} dataType={"Tasks"} icon={faClipboardList}/>
-                    <h3>Moderation</h3>
+                        <h3>Moderation</h3>
                         <ListGroupItem to={'/alert'} dataType={"Reporting"} icon={faFlag}/>
-                </ListGroup>
-            </div>
-        )
+                    </ListGroup>
+                </div>
+            )
+        }else{
+            return ("")
+        }
     }
 }

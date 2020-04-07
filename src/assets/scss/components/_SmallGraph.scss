@@ -23,10 +23,10 @@
   &.activeUsers{
     border-left: $activeUsers-color 5px solid !important;
   }
-  &.listCreated{
+  &.newLists{
     border-left: $listCreated-color 5px solid !important;
   }
-  &.taskCreated{
+  &.newTasks{
     border-left: $taskCreated-color 5px solid !important;
   }
 }

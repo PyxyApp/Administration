@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import {Button, Card} from "react-bootstrap";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import {faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import routeAPI from "../../../tools/routeAPI";
@@ -13,12 +10,8 @@ import Pagination from "react-pagination-bootstrap";
 import Categories from "./Categories";
 import Lists from "./Lists";
 import Loading from "../modules/Loading";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class ListData extends Component {
 
@@ -26,7 +19,7 @@ export default class ListData extends Component {
         super(props);
         this.state = {
             page: this.props.location.pathname.substr(1),
-            tokenACP: "",
+            tokenACP: token,
             isLoading: false,
             dataType: this.props.location.pathname.substr(6),
             data: [],
@@ -83,7 +76,7 @@ export default class ListData extends Component {
                     <Card.Header>
                         {this.state.dataType}
                         <div className={'card-header-right'}>
-                            <Link to={'/create/'+this.state.dataType}>
+                            <Link to={'/data/create/'+this.state.dataType}>
                                 <Button size={"sm"} variant={"success"}>
                                     <FontAwesomeIcon icon={faUserPlus}/> Create {this.state.dataType}
                                 </Button>

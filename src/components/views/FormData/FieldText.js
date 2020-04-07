@@ -8,6 +8,7 @@ export default class FieldText extends Component {
         return <Form.Group as={Col} controlId={this.props.id}>
                     <Form.Label>{this.props.title}</Form.Label>
                     <Form.Control
+                        defaultValue={this.props.defaultValue}
                         name={this.props.name}
                         type={this.props.type}
                         placeholder={this.props.placeholder}

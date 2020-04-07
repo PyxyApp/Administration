@@ -1,16 +1,11 @@
-const getToken = (privateKey) => {
-    fetch('https://us-central1-pyxy-f84e8.cloudfunctions.net/api/token', {
-        method: 'POST',
-        headers: {
-            'X-Requested-With': 'xmlhttprequest'
-        },
-        body: {
-            key: privateKey,
-            ACP: true
-        }
-    })
-        .then(response => response.json())
-        .then(json => console.log(json))
+import {firebaseConfig} from "../firebaseConfig";
+import key from "../privateKey";
+import * as jwt from "jsonwebtoken";
+
+const getToken = () => {
+    let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
+    let tokenACP = jwt.sign({ AdminControlPanel: true }, privateKey);
+    return tokenACP
 };
 
 export default getToken;
