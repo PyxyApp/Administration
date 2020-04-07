@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import {Card} from "react-bootstrap";
 import SmallGraph from "./SmallGraph";
 import ComparisonTasksWeek from './ComparisonTasksWeek';
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import routeAPI from "../../../tools/routeAPI";
 import Loading from "../modules/Loading";
 import GenderStatistics from "./GenderStatistics";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 class WeekStatistics extends Component {
 
@@ -22,7 +15,7 @@ class WeekStatistics extends Component {
         this.state = {
             isLoaded: false,
             apiLoaded: false,
-            tokenACP: "",
+            tokenACP: token,
             nbUsers: "",
             nbMale: "",
             weekStats: [{"name": "Monday"}, {"name": "Tuesday"}, {"name": "Wednesday"}, {"name": "Thursday"}, {"name": "Friday"}, {"name": "Saturday"}, {"name": "Sunday"}],

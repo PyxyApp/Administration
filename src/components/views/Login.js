@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import {Form, Button} from "react-bootstrap";
 import {firebaseConfig} from '../../firebaseConfig'
-import key from '../../privateKey';
 import * as firebase from 'firebase/app';
 import C from "../../tools/Constants";
-const jwt = require('jsonwebtoken');
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
+import getToken from "../../functions/getToken";
 
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
-
+const token = getToken();
 firebase.initializeApp(firebaseConfig);
 
 class login extends Component{
@@ -21,7 +16,7 @@ class login extends Component{
         this.state = {
             password: '',
             login: '',
-            user: {},
+            tokenACP: token,
             loading:true
         };
     }
@@ -37,6 +32,7 @@ class login extends Component{
 
     onSubmit = (e) => {
       e.preventDefault();
+        console.log(this.state);
         this.props.onLogin(this.state.login, this.state.password, this.state.tokenACP);
     };
 

@@ -4,21 +4,15 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faUserEdit} from "@fortawesome/free-solid-svg-icons";
 import routeAPI from "../../../tools/routeAPI";
 import Toasts from "../modules/Toasts";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class ButtonGroupAction extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            tokenACP: token,
             isShown: false,
             showToast: false,
             toastMessage: '',

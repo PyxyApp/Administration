@@ -1,20 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Table} from "react-bootstrap";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import {faTimes, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Gravatar from 'react-gravatar';
 import Loading from "../modules/Loading";
 import ButtonGroupAction from "./ButtonGroupAction";
 import routeAPI from "../../../tools/routeAPI";
-
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 class Lists extends Component {
 
@@ -22,7 +15,7 @@ class Lists extends Component {
         super(props);
         this.state = {
             page: 'lists',
-            tokenACP: "",
+            tokenACP: token,
             isLoading: false,
             data: this.props.data,
             activePage: '1'

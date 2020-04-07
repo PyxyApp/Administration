@@ -1,26 +1,18 @@
 import React, {Component} from 'react';
 import {Card} from "react-bootstrap";
-import {firebaseConfig} from "../../../firebaseConfig";
-import key from "../../../privateKey";
-import * as jwt from "jsonwebtoken";
 import Users from "./Users";
 import Lists from "./Lists";
 import Tasks from "./Tasks";
 import Categories from "./Categories";
-
-//TODO export all function of all page to one function
-let privateKey = firebaseConfig.projectId+key.author+key.privateKey;
-
-jwt.sign({ AdminControlPanel: true }, privateKey, function(err, token) {
-    this.setState({tokenACP: token}).catch(err)(console.error(err.message));
-});
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class CreateData extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            tokenACP: "",
+            tokenACP: token,
             dataType: this.props.location.pathname.substr(8),
             showToast: false,
         };
