@@ -76,7 +76,7 @@ export default class ListData extends Component {
                     <Card.Header>
                         {this.state.dataType}
                         <div className={'card-header-right'}>
-                            <Link to={'/create/'+this.state.dataType}>
+                            <Link to={'/data/create/'+this.state.dataType}>
                                 <Button size={"sm"} variant={"success"}>
                                     <FontAwesomeIcon icon={faUserPlus}/> Create {this.state.dataType}
                                 </Button>

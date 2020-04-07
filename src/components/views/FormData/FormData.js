@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card} from "react-bootstrap";
+import {Badge, Card} from "react-bootstrap";
 import Users from "./Users";
 import Lists from "./Lists";
 import Tasks from "./Tasks";
@@ -7,13 +7,15 @@ import Categories from "./Categories";
 import getToken from "../../../functions/getToken";
 const token = getToken();
 
-export default class CreateData extends Component {
+export default class FormData extends Component {
 
     constructor(props) {
         super(props);
+        let doLength = this.props.match.params.do.length;
         this.state = {
             tokenACP: token,
-            dataType: this.props.location.pathname.substr(8),
+            action: this.props.match.params.do,
+            dataType: this.props.location.pathname.substr(doLength+7),
             showToast: false,
         };
     }
@@ -34,7 +36,7 @@ export default class CreateData extends Component {
             <div className="content col-10 mt-3">
                 <Card>
                     <Card.Header>
-                        CreateData : {this.state.dataType}
+                        <span><Badge variant={"warning"}>{this.state.action}</Badge> Form Data : {this.state.dataType}</span>
                     </Card.Header>
                     <Card.Body className="d-flex justify-content-center">
                         {listData[this.state.dataType]}

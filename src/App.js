@@ -8,7 +8,7 @@ import Header from './components/containers/Header';
 import Menu from './components/containers/Menu';
 import ProfileSettings from './components/containers/ProfileSettings';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CreateData from "./components/containers/CreateData";
+import FormData from "./components/containers/FormData";
 
 const App = ({history}) => {
         return (
@@ -19,10 +19,10 @@ const App = ({history}) => {
                 <Route exact path="/list/categories" component={ListData}/>
                 <Route exact path="/list/tasks" component={ListData}/>
                 <Route exact path="/list/lists" component={ListData}/>
-                <Route exact path="/create/users" component={CreateData}/>
-                <Route exact path="/create/categories" component={CreateData}/>
-                <Route exact path="/create/tasks" component={CreateData}/>
-                <Route exact path="/create/lists" component={CreateData}/>
+                <Route exact path="/data/:do/users" component={FormData}/>
+                <Route exact path="/data/:do/categories" component={FormData}/>
+                <Route exact path="/data/:do/tasks" component={FormData}/>
+                <Route exact path="/data/:do/lists" component={FormData}/>
                 <Route exact path="/profile/settings" component={ProfileSettings}/>
                 <Route exact path="/login" component={Login}/>
                 <Route path="/" component={Menu}/>

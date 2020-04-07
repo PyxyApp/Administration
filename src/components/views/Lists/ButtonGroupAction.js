@@ -5,6 +5,7 @@ import {faTimes, faUserEdit} from "@fortawesome/free-solid-svg-icons";
 import routeAPI from "../../../tools/routeAPI";
 import Toasts from "../modules/Toasts";
 import getToken from "../../../functions/getToken";
+import {Link} from "react-router-dom";
 const token = getToken();
 
 export default class ButtonGroupAction extends Component {
@@ -79,7 +80,7 @@ export default class ButtonGroupAction extends Component {
         return(
             <div>
                 <ButtonGroup aria-label="Basic example">
-                    <Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button>
+                    <Link to={"/data/edit/" + this.props.type}><Button variant={"warning"}><FontAwesomeIcon icon={faUserEdit}/></Button></Link>
                     <Button variant={"danger"}
                             onClick={() => this.setState({isShown: true, data: "users"}
                             )}><FontAwesomeIcon icon={faTimes}/></Button>
@@ -93,7 +94,9 @@ export default class ButtonGroupAction extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose}>No</Button>
+                        {this.props.type === 'users' ? (
                         <Button type={"submit"} variant="warning" onClick={this.Deactivate}>Deactivate</Button>
+                        ) : ""}
                         <Button type={"submit"} variant="danger" onClick={this.deleteConfirm}>Yes</Button>
                     </Modal.Footer>
                 </Modal>
