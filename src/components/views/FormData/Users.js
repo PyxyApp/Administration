@@ -5,14 +5,19 @@ import FieldText from "./FieldText";
 import NationalitySelect from "./NationalitySelect";
 import GenderRadioButton from "./GenderRadioButton";
 import FooterForm from "./FooterForm";
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class Users extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            tokenACP: "",
+            tokenACP: token,
             dataType: this.props.dataType,
+            create: "POST",
+            edit: "PUT",
+            data: {"title": "", "description": "",}
         };
     }
 

@@ -17,20 +17,14 @@ export default class Switch extends Component {
                 <Form.Label sm={2}>
                     {this.props.label}
                 </Form.Label>
-                <Col onChange={this.props.handleChange}>
+                <Col>
                     <Form.Check
-                        type="radio"
-                        label="True"
-                        value={true}
+                        type="switch"
+                        label="is Active"
                         name={this.props.name}
                         id={this.props.id + "true"}
-                    />
-                    <Form.Check
-                        type="radio"
-                        label="False"
-                        value={false}
-                        name={this.props.name}
-                        id={this.props.id + "false"}
+                        onChange={this.props.handleChange}
+                        checked={this.props.checked}
                     />
                 </Col>
             </Form.Group>

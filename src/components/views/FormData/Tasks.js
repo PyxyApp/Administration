@@ -2,24 +2,54 @@ import React, {Component} from "react";
 import {Form} from "react-bootstrap";
 import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
-import GenderRadioButton from "./GenderRadioButton";
 import FooterForm from "./FooterForm";
-import Switch from "./Switch";
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class Tasks extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            tokenACP: "",
+            tokenACP: token,
             dataType: this.props.dataType,
+            create: "POST",
+            edit: "PUT",
+            data: {"name": "", "description": "", "list": ""}
         };
+    }
+
+    async componentDidMount() {
+        if(this.props.action === 'edit'){
+            await fetch(routeAPI + this.state.dataType + "/" + this.props.id, {
+                headers: { 'Authorization': this.state.tokenACP },
+            }).then(response => response.json())
+                .then(json => {
+                    if(json){
+                        this.setState({
+                            data: json,
+                            apiLoaded: true,
+                            list: json.list,
+                            name: json.name,
+                            description: json.description
+                        });
+                    }
+                }).catch(e => {
+                    console.log(e.code)
+                    console.log(e.message)
+                })
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'tasks/', {
-            method: "POST",
+        let id = this.props.id;
+        let route = routeAPI + 'tasks/';
+        if(id){
+            route = routeAPI + 'tasks/' + id
+        }
+        fetch( route, {
+            method: this.state[this.props.action],
             headers: {
                 'Authorization': this.state.tokenACP,
                 'Accept': 'application/json',
@@ -28,15 +58,13 @@ export default class Tasks extends Component {
             body: JSON.stringify({
                 name: this.state.name,
                 description: this.state.description,
-                list: this.state.list,
-                is_private: false,
-                is_active: true,
+                list: this.state.list
             })
         })
             .then(r => {
                 console.log(r);
                 this.setState({
-                    toastMessage: 'Tasks created with success !',
+                    toastMessage: 'The action was successfully completed',
                     toastType: 'success'
                 })
             })
@@ -61,13 +89,13 @@ export default class Tasks extends Component {
         console.log(this.state);
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText title={"Name"} name={"name"} id={"name"} placeholder={"Visit the Taj Mahal"} type={'text'} handleChange={this.handleChange}/>
-                <FieldText title={"list"} name={"list"} id={"list"} placeholder={"listId"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.name} title={"Name"} name={"name"} id={"name"} placeholder={"Visit the Taj Mahal"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.list} title={"list"} name={"list"} id={"list"} placeholder={"listId"} type={'text'} handleChange={this.handleChange}/>
             </Form.Row>
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Description</Form.Label>
-                <Form.Control name="description" as="textarea" rows="3" onChange={this.handleChange}/>
+                <Form.Control name="description" as="textarea" rows="3" onChange={this.handleChange} defaultValue={this.state.data.description}/>
             </Form.Group>
 
             {/*<Form.Row>*/}

@@ -3,6 +3,8 @@ import {Form} from "react-bootstrap";
 import routeAPI from "../../../tools/routeAPI";
 import FieldText from "./FieldText";
 import FooterForm from "./FooterForm";
+import getToken from "../../../functions/getToken";
+const token = getToken();
 
 export default class Categories extends Component {
 
@@ -11,33 +13,64 @@ export default class Categories extends Component {
         this.state = {
             tokenACP: "",
             dataType: this.props.dataType,
+            create: "POST",
+            edit: "PUT",
             toastMessage: "",
-            toastType: ""
+            toastType: "",
+            data: {"title": "", "description": "",}
         };
+    }
+
+    async componentDidMount() {
+        if(this.props.action === 'edit'){
+            await fetch(routeAPI + this.state.dataType + "/" + this.props.id, {
+                headers: { 'Authorization': this.state.tokenACP },
+            }).then(response => response.json())
+                .then(json => {
+                    if(json){
+                        this.setState({
+                            data: json,
+                            apiLoaded: true,
+                            title: json.title,
+                            description: json.description
+                        });
+                    }
+                }).catch(e => {
+                    console.log(e.code);
+                    console.log(e.message)
+                })
+        }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        fetch(routeAPI + 'categories/', {
-            method: "POST",
+        let id = this.props.id;
+        let route = routeAPI + 'categories/';
+        if(id){
+            route = routeAPI + 'categories/' + id
+        }
+        console.log(this.state);
+        fetch(route, {
+            method: this.state[this.props.action],
             headers: {
                 'Authorization': this.state.tokenACP,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                title: this.state.title
+                title: this.state.title,
+                description: this.state.description
             })
         })
             .then(r => {
                 if(r.ok){
                     this.setState({
-                        toastMessage: 'Category created with success !',
+                        toastMessage: 'The action was successfully completed',
                         toastType: 'success'
                     })
                 }else{
                     this.setState({
-                        toastMessage: 'An error occurred while creating the category: ' + e.message,
+                        toastMessage: 'An error occurred while creating the category: ' + r.statusText,
                         toastType: 'error'
                     });
                 }
@@ -62,8 +95,13 @@ export default class Categories extends Component {
     render() {
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText title={"Title"} name={"title"} id={"title"} placeholder={"Travel"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.title} title={"Title"} name={"title"} id={"title"} placeholder={"Travel"} type={'text'} handleChange={this.handleChange}/>
             </Form.Row>
+
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Label>Description</Form.Label>
+                <Form.Control defaultValue={this.state.data.description} name="description" as="textarea" rows="3" onChange={this.handleChange}/>
+            </Form.Group>
 
             <FooterForm showT={this.props.showT} toastMessage={this.state.toastMessage} toastType={this.state.toastType}/>
         </Form>;
