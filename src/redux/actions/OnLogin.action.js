@@ -12,16 +12,17 @@ export const onLogin = (login, password, token) => dispatch => {
                 })
                     .then(response => response.json()).then(json => {
                         if(json){
-                            if(json.acp.admin){
+                            if(json.admin){
+                                history.push('/');
                                 dispatch({ payload: json, type: C.SUCCESS_LOGIN });
-                                history.push('/')
                             }else{
+                                console.log("Tu n'as pas accès à l'administration");
                                 dispatch({type: C.FAIL_LOGIN});
                             }
                         }
                     }).catch(e => {
                         dispatch({type: C.FAIL_LOGIN});
                 })
-            }
+        }
         ).catch(e => { dispatch({ type: C.FAIL_LOGIN, payload: e.message })})
 };

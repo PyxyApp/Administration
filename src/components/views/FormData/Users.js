@@ -18,8 +18,8 @@ export default class Users extends Component {
             dataType: this.props.dataType,
             create: "POST",
             edit: "PUT",
-            data: {"nat": "", "name": {"firstname": "", "lastname": "", "username": ""}, "email": "", "gender": "", "is_active": true, "password": "", "phone": ""},
-            is_active: true,
+            data: {"nat": "", "name": {"firstname": "", "lastname": "", "username": ""}, "email": "", "gender": "", "deactivate": false, "password": "", "phone": ""},
+            deactivate: true,
             admin: false,
         };
     }
@@ -38,8 +38,8 @@ export default class Users extends Component {
                             firstname: json.name.firstname,
                             lastname: json.name.lastname,
                             username: json.name.username,
-                            is_active: json.is_active,
-                            admin: json.acp.admin,
+                            deactivate: json.is_deactivate,
+                            admin: json.admin,
                             gender: json.gender,
                             nat: json.nat,
                         });
@@ -72,7 +72,7 @@ export default class Users extends Component {
                 lastname: this.state.lastname,
                 username: this.state.username,
                 nat: this.state.nat,
-                is_active: this.state.is_active,
+                is_deactivate: this.state.deactivate,
                 admin: this.state.admin,
                 gender: this.state.gender,
                 phone: this.state.phone,
@@ -129,7 +129,7 @@ export default class Users extends Component {
 
             <Form.Row>
                 <GenderRadioButton handleChange={this.handleChange}/>
-                <Switch label={"Is Active ?"} id={"isActive"} name={"is_active"} handleChange={this.handleChange} checked={this.state.is_active}/>
+                <Switch label={"Is Deactivate ?"} id={"isDeactivate"} name={"deactivate"} handleChange={this.handleChange} checked={this.state.deactivate}/>
                 <Switch label={"Is Admin ?"} id={"admin"} name={"admin"} handleChange={this.handleChange} checked={this.state.admin}/>
             </Form.Row>
 

@@ -37,7 +37,7 @@ class Index extends Component {
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>{user.uid}</td>
-                                <td>{user.acp.admin ? "true" : 'false'}</td>
+                                <td>{user.admin ? "true" : 'false'}</td>
                                 <td>
                                     <Gravatar email={user.email} size={35} className="rounded-circle"/>&nbsp;
                                     {user.name.firstname} {user.name.lastname}</td>
