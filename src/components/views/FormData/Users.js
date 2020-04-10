@@ -111,7 +111,7 @@ export default class Users extends Component {
     render() {
         return <Form onSubmit={this.handleSubmit}>
             <Form.Row>
-                <FieldText defaultValue={this.state.data.email} title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'text'} handleChange={this.handleChange}/>
+                <FieldText defaultValue={this.state.data.email} title={"Email"} name={"email"} id={"email"} placeholder={"john.doe@example.com"} type={'email'} handleChange={this.handleChange}/>
                 <FieldText defaultValue={this.state.data.password} title={"Password"} name={"password"} id={"password"} placeholder={"*******"} type={'password'} handleChange={this.handleChange}/>
             </Form.Row>
 

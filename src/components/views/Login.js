@@ -32,7 +32,6 @@ class login extends Component{
 
     onSubmit = (e) => {
       e.preventDefault();
-        console.log(this.state);
         this.props.onLogin(this.state.login, this.state.password, this.state.tokenACP);
     };
 

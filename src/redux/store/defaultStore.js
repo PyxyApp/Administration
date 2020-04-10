@@ -16,7 +16,7 @@ export default function configureStore(preloadedState) {
             applyMiddleware(
                 routerMiddleware(history),
                 // Remove checkAuth during front dev
-                // checkAuth(history),
+                checkAuth(history),
                 thunk
             ),
         )
