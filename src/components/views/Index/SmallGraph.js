@@ -41,7 +41,7 @@ class SmallGraph extends Component {
                     <Card.Subtitle>{this.props.title}</Card.Subtitle>
                     <h5>{this.totalData()}</h5>
                 </div>
-                <LineChart width={150} height={50} data={this.state.data}>
+                <LineChart width={150} height={50} data={this.props.stats}>
                     <XAxis hide dataKey="name" />
                     <Tooltip />
                     <Line type="monotone" dataKey={this.props.type} stroke={this.switchColor(this.props.type)} strokeWidth={2} dot={false}/>

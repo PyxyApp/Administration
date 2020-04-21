@@ -99,12 +99,13 @@ class WeekStatistics extends Component {
         if(this.state.apiLoaded){
             if(!this.state.isLoaded){ this.getStats()}
         }
+        console.log(this.state.weekStats[0].activeUsers);
         return(
             <Card className={"mt-3"}>
                 <Card.Header>Trafic this week</Card.Header>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">Current week</Card.Subtitle>
-                    {this.state.weekStats[0].activeUsers ? (
+                    {this.state.weekStats[0].activeUsers !== undefined ? (
                         <div className="d-flex flex-row justify-content-between">
                             <SmallGraph title={'New users'} type={'newUsers'} stats={this.state.weekStats}/>
                             <SmallGraph title={'Active users'} type={'activeUsers'} stats={this.state.weekStats}/>
